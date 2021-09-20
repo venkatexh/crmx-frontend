@@ -34,6 +34,7 @@ const Account = () => {
         <LeftNav />
       </div>
       <div className={"body"}>{componentToRender()}</div>
+      <div className={"rightCol"}>pro</div>
     </div>
   );
 };

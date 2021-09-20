@@ -4,11 +4,28 @@
   flex-direction: column;
   align-items: flex-start;
 
+  .logo {
+    padding: 1rem 0 2rem 1rem;
+  }
+
+  .linkTag {
+    text-decoration: none;
+    width: 100%;
+  }
+
   .navLink {
-    color: #414242
+    width: 100%;
+    color: #414242;
+    font-size: 21px;
+    padding: 0.8rem 0;
+
+    .text {
+      margin-left: 1rem;
+    }
   }
 
   .navHighlighted {
-
+    background: #b55dfc;
+    color: white;
   }
 }

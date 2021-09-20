@@ -14,20 +14,26 @@ const LeftNav = () => {
 
   const NavLink = ({ window }) => {
     return (
-      <Link to={`/${window}`} style={{ textDecoration: "none" }}>
-        <div
-          className={`${
-            state.accountWindow === window ? "navHighlighted" : ""
-          } navLink`}
-          onClick={() => handleWindowChange(window)}
-        >
-          {window.charAt(0).toUpperCase() + window.slice(1)}
-        </div>
-      </Link>
+      <>
+        <Link to={`/${window}`} className={"linkTag"}>
+          <div
+            className={`${
+              state.accountWindow === window ? "navHighlighted" : ""
+            } navLink`}
+            onClick={() => handleWindowChange(window)}
+          >
+            <span className={"text"}>
+              {window.charAt(0).toUpperCase() + window.slice(1)}
+            </span>
+          </div>
+        </Link>
+        {/*<hr className={"line"} />*/}
+      </>
     );
   };
   return (
     <div className={"navigation"}>
+      <div className={"logo"}>CRMX</div>
       {windows.map((window) => {
         return <NavLink window={window} />;
       })}
