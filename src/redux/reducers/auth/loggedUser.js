@@ -3,6 +3,6 @@ export const loggedUser = (user = null, action) => {
     case "LOGIN":
       return action.payload;
     default:
-      return sessionStorage.getItem("loggedUser");
+      return JSON.parse(sessionStorage.getItem("loggedUser"));
   }
 };

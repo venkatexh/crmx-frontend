@@ -2,14 +2,24 @@ import LeftNav from "../../components/navigation/LeftNav";
 import "../../sass/pages/account.page.scss";
 import Dashboard from "../account/Dashboard";
 import Contacts from "../account/Contacts";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Campaigns from "../account/Campaigns";
 import Tags from "../account/Tags";
 import Surveys from "../account/Surveys";
+import { login } from "../../redux/actions/auth/signin";
 
 const Account = () => {
-  const state = useSelector(({ accountWindow }) => ({ accountWindow }));
+  const dispatch = useDispatch();
+  const state = useSelector(({ loggedUser, accountWindow }) => ({
+    loggedUser,
+    accountWindow,
+  }));
+  useEffect(() => {
+    if (!state.loggedUser) {
+      dispatch(login(JSON.parse(sessionStorage.getItem("loggedUser"))));
+    }
+  }, []);
   const componentToRender = () => {
     switch (state.accountWindow) {
       case "dashboard":

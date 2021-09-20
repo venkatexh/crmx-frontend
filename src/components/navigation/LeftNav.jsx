@@ -34,8 +34,8 @@ const LeftNav = () => {
   return (
     <div className={"navigation"}>
       <div className={"logo"}>CRMX</div>
-      {windows.map((window) => {
-        return <NavLink window={window} />;
+      {windows.map((window, idx) => {
+        return <NavLink key={idx} window={window} />;
       })}
     </div>
   );
