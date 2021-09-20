@@ -6,8 +6,12 @@ import {
 } from "react-router-dom";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
+import { useSelector } from "react-redux";
 
 const Main = () => {
+  const state = useSelector(({ loggedUser }) => ({ loggedUser }));
+  console.log(state);
+
   const nonSessionRoutes = () => {
     return (
       <Switch>
@@ -25,7 +29,7 @@ const Main = () => {
     return (
       <Switch>
         <Route exact path={"/"}>
-          <Redirect to={"/home"} />
+          <Redirect to={"/"} />
         </Route>
         <Redirect to={"/"} />
       </Switch>
