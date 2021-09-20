@@ -1,0 +1,28 @@
+.dashHeader {
+
+  display: flex;
+  padding-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+
+  .greeting {
+    font-size: 45px;
+  }
+
+  .contactCount {
+    font-size: 28px;
+    margin-top: 10px;
+  }
+
+  .viewContactsBtn {
+    width: 152px;
+    height: 42px;
+    background: black;
+    color: white;
+    border: 0;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
