@@ -1,0 +1,14 @@
+.mainContainer {
+  display: flex;
+  padding: 2rem 0;
+
+  .nav {
+    width: 15%;
+    padding: 0 1rem;
+  }
+
+  .body {
+    width: 85%;
+    padding: 0 1rem;
+  }
+}

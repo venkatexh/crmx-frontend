@@ -7,6 +7,7 @@ import {
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import { useSelector } from "react-redux";
+import Account from "./index/Account";
 
 const Main = () => {
   const state = useSelector(({ loggedUser }) => ({ loggedUser }));
@@ -29,8 +30,9 @@ const Main = () => {
     return (
       <Switch>
         <Route exact path={"/"}>
-          <Redirect to={"/"} />
+          <Redirect to={"/account"} />
         </Route>
+        <Route to={"/account"} component={Account} />
         <Redirect to={"/"} />
       </Switch>
     );
