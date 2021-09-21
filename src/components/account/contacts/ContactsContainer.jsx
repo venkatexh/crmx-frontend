@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveContacts } from "../../../redux/actions/account/saveContacts";
 import "../../../sass/components/account/contacts/contactsContainer.component.scss";
@@ -9,7 +9,6 @@ const ContactsContainer = () => {
     loggedUser,
     contacts,
   }));
-  console.log(state);
   useEffect(() => {
     setTimeout(() => {
       dispatch(saveContacts(state.loggedUser.id));
@@ -32,29 +31,30 @@ const ContactsContainer = () => {
       ) : (
         <>
           <div className={"header"}>
+            <div className={"colEmail"}>Email</div>
             <div className={"col"}>First Name</div>
             <div className={"col"}>Last Name</div>
-            <div className={"colEmail"}>Email</div>
             <div className={"col"}>Status</div>
             <div className={"col"}>Location</div>
           </div>
           <div className={"scroll"}>
-            {state.contacts.map(
-              ({ firstName, lastName, email, status, location }) => {
+            {state.contacts
+              .slice(0)
+              .reverse()
+              .map(({ firstName, lastName, email, status, location }) => {
                 return (
                   <div className={"rowContainer"}>
                     <div className={"contactRow"}>
+                      <div className={"colEmail"}>{email}</div>
                       <div className={"col"}>{firstName}</div>
                       <div className={"col"}>{lastName}</div>
-                      <div className={"colEmail"}>{email}</div>
                       <div className={"col"}>{status}</div>
                       <div className={"col"}>{location}</div>
                     </div>
                     <hr className={"separator"} />
                   </div>
                 );
-              }
-            )}
+              })}
           </div>
         </>
       )}
