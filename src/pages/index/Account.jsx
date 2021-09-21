@@ -9,6 +9,7 @@ import Tags from "../account/Tags";
 import Surveys from "../account/Surveys";
 import { login } from "../../redux/actions/auth/signin";
 import Modal from "../../components/modals/Modal";
+import RightNav from "../../components/navigation/RightNav";
 
 const Account = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,9 @@ const Account = () => {
           <LeftNav />
         </div>
         <div className={"body"}>{componentToRender()}</div>
-        <div className={"rightCol"}>pro</div>
+        <div className={"rightCol"}>
+          <RightNav />
+        </div>
         {state.modalState ? <Modal /> : <></>}
       </div>
     </>

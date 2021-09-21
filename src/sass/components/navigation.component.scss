@@ -29,3 +29,86 @@
     color: white;
   }
 }
+
+.rightNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .profileBtn {
+    margin: 20px 0;
+    background: #b55dfc;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btnInternal {
+    cursor: auto;
+  }
+
+  .profileBtn:hover {
+
+  }
+
+  .iconContainer {
+    width: 100%;
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .iconContainer:hover {
+    background: #f2f2f2;
+  }
+}
+
+.profileTab {
+  position: absolute;
+  height: 42vh;
+  width: 18vw;
+  background: #ffffff;
+  right: 6vw;
+  top: 6vh;
+  z-index: 1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border-radius: 16px;
+  padding: 20px 0;
+
+  .topDiv {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+
+    .profileInfo {
+      padding-left: 18px;
+
+      .name {
+        font-size: 21px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+
+    .menu-item {
+      padding: 12px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: #f2f2f2;
+    }
+  }
+}
