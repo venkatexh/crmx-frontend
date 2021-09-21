@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import "../../../sass/components/account/dashboard/header.component.scss";
 import { Link } from "react-router-dom";
-import { changeWindow } from "../../../redux/actions/account/changeWindow";
+import { toggleModal } from "../../../redux/actions/utility/toggleModal";
 
 const Header = () => {
   const state = useSelector(({ loggedUser }) => ({ loggedUser }));
   const dispatch = useDispatch();
+  const modalType = "new-contact";
   const handleClick = () => {
-    dispatch(changeWindow("contacts"));
+    dispatch(toggleModal(modalType));
   };
   return (
     <div className={"dashHeader"}>

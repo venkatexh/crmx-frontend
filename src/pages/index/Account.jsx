@@ -8,12 +8,14 @@ import Campaigns from "../account/Campaigns";
 import Tags from "../account/Tags";
 import Surveys from "../account/Surveys";
 import { login } from "../../redux/actions/auth/signin";
+import Modal from "../../components/modals/Modal";
 
 const Account = () => {
   const dispatch = useDispatch();
-  const state = useSelector(({ loggedUser, accountWindow }) => ({
+  const state = useSelector(({ loggedUser, accountWindow, modalState }) => ({
     loggedUser,
     accountWindow,
+    modalState,
   }));
   useEffect(() => {
     if (!state.loggedUser) {
@@ -39,13 +41,16 @@ const Account = () => {
 
   useEffect(() => {}, [state.accountWindow]);
   return (
-    <div className={"mainContainer"}>
-      <div className={"nav"}>
-        <LeftNav />
+    <>
+      <div className={"mainContainer"}>
+        <div className={"nav"}>
+          <LeftNav />
+        </div>
+        <div className={"body"}>{componentToRender()}</div>
+        <div className={"rightCol"}>pro</div>
+        {state.modalState ? <Modal /> : <></>}
       </div>
-      <div className={"body"}>{componentToRender()}</div>
-      <div className={"rightCol"}>pro</div>
-    </div>
+    </>
   );
 };
 
