@@ -2,6 +2,7 @@ import "../../sass/components/login.component.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/auth/signin";
+import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
 import hostHeader from "../../config/host";
 import { withRouter } from "react-router";
@@ -31,7 +32,6 @@ const LoginForm = (props) => {
           if (res.status === 200) {
             sessionStorage.setItem("loggedUser", JSON.stringify(res.data));
             dispatch(login(res.data));
-            props.history.push("/dashboard");
           }
         })
         .catch((error) => {
@@ -39,6 +39,22 @@ const LoginForm = (props) => {
           setLoading(false);
         });
     }
+  };
+
+  const handleGoogleLogin = (googleData) => {
+    console.log(googleData);
+    Axios.post(`${hostHeader.url}/api/auth/google`, {
+      token: googleData.tokenId,
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          sessionStorage.setItem("loggedUser", JSON.stringify(res.data));
+          dispatch(login(res.data));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -76,6 +92,17 @@ const LoginForm = (props) => {
             "Login"
           )}
         </button>
+      </div>
+      <div className={"googleLogin"}>
+        <GoogleLogin
+          clientId={
+            "890966820609-l0avgljiscj57oqqifjajo23gmnlp2q7.apps.googleusercontent.com"
+          }
+          buttonText={"Login with Google"}
+          onSuccess={handleGoogleLogin}
+          onFailure={handleGoogleLogin}
+          cookiePolicy={"single_host_origin"}
+        />
       </div>
       <div>
         <div className={"header"}>Don't Have an Account?</div>

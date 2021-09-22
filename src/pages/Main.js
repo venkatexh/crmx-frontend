@@ -32,7 +32,7 @@ const Main = () => {
         <Route exact path={"/"}>
           <Redirect to={"/account"} />
         </Route>
-        <Route to={"/account"} component={Account} />
+        <Route exact path={"/account"} component={Account} />
         <Redirect to={"/"} />
       </Switch>
     );
