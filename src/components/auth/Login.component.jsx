@@ -44,7 +44,8 @@ const LoginForm = (props) => {
   const handleGoogleLogin = (googleData) => {
     console.log(googleData);
     Axios.post(`${hostHeader.url}/api/auth/google`, {
-      token: googleData.tokenId,
+      idToken: googleData.tokenId,
+      accessToken: googleData.accessToken,
     })
       .then((res) => {
         if (res.status === 200) {
@@ -102,6 +103,8 @@ const LoginForm = (props) => {
           onSuccess={handleGoogleLogin}
           onFailure={handleGoogleLogin}
           cookiePolicy={"single_host_origin"}
+          accessType={"offline"}
+          prompt={"consent"}
         />
       </div>
       <div>
