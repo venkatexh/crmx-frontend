@@ -6,15 +6,21 @@
     width: 15vw;
     height: 100vh;
     background: #f2f2f2;
+    position: fixed;
   }
 
   .body {
+    margin-left: 15vw;
+    margin-right: 5vw;
     width: 80vw;
     padding: 2rem 2rem;
   }
 
   .rightCol {
     width: 5vw;
+    height: 100vh;
     border-left: 2px #f2f2f2 solid;
+    position: fixed;
+    right:0;
   }
 }

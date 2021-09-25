@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { saveCampaigns } from "../../../redux/actions/account/saveCampaigns";
 import Campaign from "./Campaign";
+import "../../../sass/components/account/campaigns/container.scss";
 
 const Container = () => {
   const dispatch = useDispatch();
@@ -16,12 +17,18 @@ const Container = () => {
     setTimeout(() => {
       dispatch(saveCampaigns(state.loggedUser.id));
       setLoading(false);
-    }, 1000);
+    }, 500);
   }, []);
-  console.log(state.campaigns);
+
   const componentToRender = () => {
     if (loading) {
-      return <img src={"/loaders/comp_loader.gif"} alt={"loader"} />;
+      return (
+        <img
+          src={"/loaders/comp_loader.gif"}
+          alt={"loader"}
+          className={"loader"}
+        />
+      );
     } else {
       return (
         <div>
@@ -48,7 +55,14 @@ const Container = () => {
       );
     }
   };
-  return <div>{componentToRender()}</div>;
+  return (
+    <div className={"campaignsContainer"}>
+      <div className={`${loading ? "campaignsLoading" : "campaignsLoaded"}`}>
+        {componentToRender()}
+      </div>
+      <div className={"filtersList"}></div>
+    </div>
+  );
 };
 
 export default Container;
