@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../../sass/components/modals/newCampaign.scss";
 import Axios from "axios";
 import hostHeader from "../../../config/host";
@@ -20,6 +20,7 @@ const SecondState = ({
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailType, setEmailType] = useState(0);
+  const [sendTo, setSendTo] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -28,7 +29,23 @@ const SecondState = ({
     campaigns,
   }));
 
-  const handleButtonClick = (e) => {
+  useEffect(() => {
+    setLoading(true);
+    for (const tag of tags) {
+      Axios.get(`${hostHeader.url}/api/tag/${tag.id}/contacts`)
+        .then((res) => {
+          setSendTo((prevState) => [...prevState, ...res.data]);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err.message);
+          setErrorMessage("Something went wrong! please try again.");
+          setLoading(false);
+        });
+    }
+  }, [tags]);
+
+  const handleButtonClick = async (e) => {
     e.preventDefault();
     if (subject === "" || !subject.trim()) {
       setErrorMessage("Please enter the subject.");
@@ -44,16 +61,24 @@ const SecondState = ({
         subject,
         text,
         html,
+        sentTo: sendTo,
       };
+      console.log(sendTo);
       Axios.post(
         `${hostHeader.url}/api/user/${state.loggedUser.id}/campaigns`,
         campaign
-      ).then((res) => {
-        if (res.status === 200) {
-          dispatch(updateCampaigns([...state.campaigns, res.data]));
-          handleStateChange();
-        }
-      });
+      )
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch(updateCampaigns([...state.campaigns, res.data]));
+            handleStateChange();
+          }
+        })
+        .catch((err) => {
+          console.log(err.message);
+          setErrorMessage("Something went wrong! please try again.");
+        });
+      console.log(campaign);
     }
   };
   if (loading) {
