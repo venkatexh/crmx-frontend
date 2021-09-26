@@ -2,7 +2,7 @@ import "../../sass/components/modals/modal.component.scss";
 import NewContact from "./NewContact";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../redux/actions/utility/toggleModal";
-import NewCampaign from "./NewCampaign";
+import NewCampaign from "./NewCampaign/NewCampaign";
 
 const Modal = () => {
   const dispatch = useDispatch();

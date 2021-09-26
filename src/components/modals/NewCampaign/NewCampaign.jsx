@@ -1,6 +1,7 @@
 import { useState } from "react";
-import FirstState from "./NewCampaign/FirstState";
-import SecondState from "./NewCampaign/SecondState";
+import FirstState from "./FirstState";
+import SecondState from "./SecondState";
+import ThirdState from "./ThirdState";
 
 const NewCampaign = () => {
   const [name, setName] = useState("");
@@ -46,11 +47,13 @@ const NewCampaign = () => {
     />
   );
 
+  stateMap.set(2, <ThirdState />);
+
   const componentToRender = () => {
     return stateMap.get(currentState);
   };
 
-  return <div>{componentToRender()}</div>;
+  return <>{componentToRender()}</>;
 };
 
 export default NewCampaign;

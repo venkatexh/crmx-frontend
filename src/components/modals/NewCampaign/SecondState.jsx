@@ -45,7 +45,6 @@ const SecondState = ({
         text,
         html,
       };
-      console.log(campaign);
       Axios.post(
         `${hostHeader.url}/api/user/${state.loggedUser.id}/campaigns`,
         campaign
@@ -57,71 +56,83 @@ const SecondState = ({
       });
     }
   };
-
-  return (
-    <div className={"newCampaign"}>
-      <div className={"header"}>Create new campaign</div>
-      <form className={"form"}>
-        <div>
-          <label>Create an email for your campaign</label>
-          <input
-            className={"modalInput inputLarge"}
-            value={subject}
-            placeholder={"Enter email subject"}
-            onChange={(e) => {
-              setErrorMessage("");
-              handleSubjectChange(e);
-            }}
-          />
-        </div>
-        <div className={"selectionGroup"}>
-          <div
-            className={`${emailType === 0 ? "selected" : ""} selection left`}
-            onClick={() => {
-              setErrorMessage("");
-              setEmailType(0);
-            }}
-          >
-            Text
-          </div>
-          <div
-            className={`${emailType === 1 ? "selected" : ""} selection right`}
-            onClick={() => {
-              setErrorMessage("");
-              setEmailType(1);
-            }}
-          >
-            HTML
-          </div>
-        </div>
-        {emailType === 0 ? (
+  if (loading) {
+    return (
+      <div className={"campaignSubmitLoading"}>
+        <img
+          src={"/loaders/comp_loader.gif"}
+          alt={"loader"}
+          className={"loader"}
+        />
+      </div>
+    );
+  } else {
+    return (
+      <div className={"newCampaign"}>
+        <div className={"header"}>Create new campaign</div>
+        <form className={"form"}>
           <div>
-            <textarea
-              rows={10}
-              className={"emailText"}
-              value={text}
-              onChange={(e) => handleTextChange(e)}
+            <label>Create an email for your campaign</label>
+            <input
+              className={"modalInput inputLarge"}
+              value={subject}
+              placeholder={"Enter email subject"}
+              onChange={(e) => {
+                setErrorMessage("");
+                handleSubjectChange(e);
+              }}
             />
           </div>
-        ) : (
-          <div className={"tagsInput"}>
-            <div className={"tagsList"}>
-              <div className={"selectedTagsList"}></div>
-              <div className={"userTagsList"}></div>
+          <div className={"selectionGroup"}>
+            <div
+              className={`${emailType === 0 ? "selected" : ""} selection left`}
+              onClick={() => {
+                setErrorMessage("");
+                setEmailType(0);
+              }}
+            >
+              Text
+            </div>
+            <div
+              className={`${emailType === 1 ? "selected" : ""} selection right`}
+              onClick={() => {
+                setErrorMessage("");
+                setEmailType(1);
+              }}
+            >
+              HTML
             </div>
           </div>
-        )}
-        <div className={"btnContainer"}>
-          <div className={"errorMessage"}>{errorMessage}</div>
-          <button className={"button"} onClick={handleButtonClick}>
-            Create
-          </button>
+          {emailType === 0 ? (
+            <div>
+              <textarea
+                rows={10}
+                className={"emailText"}
+                value={text}
+                onChange={(e) => handleTextChange(e)}
+              />
+            </div>
+          ) : (
+            <div className={"tagsInput"}>
+              <div className={"tagsList"}>
+                <div className={"selectedTagsList"}></div>
+                <div className={"userTagsList"}></div>
+              </div>
+            </div>
+          )}
+          <div className={"btnContainer"}>
+            <div className={"errorMessage"}>{errorMessage}</div>
+            <button className={"button"} onClick={handleButtonClick}>
+              Create
+            </button>
+          </div>
+        </form>
+        <div className={"goBack"} onClick={handlePrevState}>
+          go back
         </div>
-      </form>
-      <div className={"goBack"} onClick={handlePrevState}>
-        go back
       </div>
-    </div>
-  );
+    );
+  }
 };
+
 export default SecondState;

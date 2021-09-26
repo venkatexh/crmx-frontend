@@ -171,4 +171,51 @@
     bottom: 10px;
     left: 10px;
   }
+
+  .success {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .successIcon {
+      height: 200px;
+    }
+
+    .message {
+      margin-top: 40px;
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+  .buttonsGroup {
+    margin: 60px 0;
+    display: flex;
+    justify-content: center;
+
+    .button {
+      background: #000000;
+      font-size: 16px;
+      color: #ffffff;
+      font-weight: 600;
+      width: 120px;
+      height: 36px;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .send {
+      margin-right: 20px;
+    }
+  }
+}
+
+.campaignSubmitLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
