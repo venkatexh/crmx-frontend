@@ -1,0 +1,174 @@
+.newCampaign {
+  padding: 40px;
+
+  .header {
+    font-size: 26px;
+    font-weight: 500;
+  }
+
+  .form {
+    width: 80%;
+    margin: 40px auto;
+
+    .modalInput {
+      height: 41px;
+      border: 0;
+      border-bottom: 1px solid #cccaca;
+      padding: 0;
+    }
+
+    .inputLarge {
+      width: 100%;
+      height: 41px;
+    }
+
+    .modalInput:focus {
+      outline: 0;
+    }
+
+    .selectionGroup {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+
+      .selection {
+        width: 120px;
+        height: 36px;
+        border: 1px solid #757171;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .left {
+        border-radius: 10px 0 0 10px;
+        border-right: 0;
+      }
+
+      .selected {
+        background: #b55dfc;
+        border: 1px solid #b55dfc;
+        cursor: auto;
+        color: white;
+        font-weight: 600;
+      }
+
+      .right {
+        border-radius: 0 10px 10px 0;
+        border-left: 0;
+      }
+    }
+
+    .emailText {
+      width: 100%;
+      border: 1px solid #cccaca
+    }
+
+    .emailText:focus  {
+      outline: none;
+    }
+
+    .tagsInput {
+      width: 100%;
+      margin-top: 30px;
+
+      .tagsList {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .userTagsList {
+          width: 40%;
+          height: 200px;
+          margin-top: 20px;
+          padding: 3px;
+          -moz-box-shadow: inset 0 0 2px #000000;
+          -webkit-box-shadow: inset 0 0 2px #000000;
+          box-shadow: inset 0 0 3px #000000;
+
+          .listWrapper {
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+
+          .listWrapper::-webkit-scrollbar {
+            display: none;
+          }
+
+          .userTag {
+            background: #f2f2f2;
+            padding: 12px 20px;
+            cursor: pointer;
+          }
+
+          .userTag:hover {
+            background: #676766;
+            color: white;
+          }
+
+          .userTagSelected {
+            background: #b55dfc;
+            padding: 12px 20px;
+            cursor: pointer;
+            color: white;
+          }
+        }
+
+        .selectedTagsList {
+          width: 60%;
+          height: 100%;
+          padding: 20px 0 0 20px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          align-items: flex-start;
+
+          .selectedTag {
+            padding: 6px 16px;
+            border-radius: 5px;
+            margin: 0 5px 10px 0;
+            height: 16px;
+            background: #e8eded;
+          }
+        }
+      }
+    }
+    .btnContainer {
+      position: relative;
+      padding: 40px 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .errorMessage {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        color: red;
+      }
+
+      .button {
+        background: #000000;
+        font-size: 16px;
+        color: #ffffff;
+        font-weight: 600;
+        width: 120px;
+        height: 36px;
+        border: 0;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+  .goBack {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+  }
+}
