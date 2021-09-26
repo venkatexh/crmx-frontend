@@ -1,26 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveContacts } from "../../../redux/actions/account/saveContacts";
 import "../../../sass/components/account/contacts/contactsContainer.component.scss";
 
 const ContactsContainer = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const state = useSelector(({ loggedUser, contacts }) => ({
     loggedUser,
     contacts,
   }));
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(saveContacts(state.loggedUser.id));
-    }, 1000);
+    if (!state.contacts) {
+      setLoading(true);
+      setTimeout(() => {
+        dispatch(saveContacts(state.loggedUser.id));
+        setLoading(false);
+      }, 1000);
+    }
   }, []);
   return (
-    <div
-      className={`${
-        state.contacts.length === 0 ? "loading" : "loaded"
-      } container`}
-    >
-      {state.contacts.length === 0 ? (
+    <div className={`${loading ? "loading" : "loaded"} container`}>
+      {loading ? (
         <div>
           <img
             src={"/loaders/comp_loader.gif"}
@@ -28,6 +29,8 @@ const ContactsContainer = () => {
             style={{ height: "60px" }}
           />
         </div>
+      ) : state.contacts.length === 0 ? (
+        <div>You don't have any contacts</div>
       ) : (
         <>
           <div className={"header"}>
