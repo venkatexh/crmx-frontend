@@ -11,7 +11,7 @@ const ContactsContainer = () => {
     contacts,
   }));
   useEffect(() => {
-    if (!state.contacts) {
+    if (state.contacts.length === 0) {
       setLoading(true);
       setTimeout(() => {
         dispatch(saveContacts(state.loggedUser.id));
@@ -19,6 +19,7 @@ const ContactsContainer = () => {
       }, 1000);
     }
   }, []);
+
   return (
     <div className={`${loading ? "loading" : "loaded"} container`}>
       {loading ? (
