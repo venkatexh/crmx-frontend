@@ -63,7 +63,6 @@ const SecondState = ({
         html,
         sentTo: sendTo,
       };
-      console.log(sendTo);
       Axios.post(
         `${hostHeader.url}/api/user/${state.loggedUser.id}/campaigns`,
         campaign
@@ -78,7 +77,6 @@ const SecondState = ({
           console.log(err.message);
           setErrorMessage("Something went wrong! please try again.");
         });
-      console.log(campaign);
     }
   };
   if (loading) {

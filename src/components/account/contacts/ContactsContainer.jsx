@@ -45,9 +45,9 @@ const ContactsContainer = () => {
             {state.contacts
               .slice(0)
               .reverse()
-              .map(({ firstName, lastName, email, status, location }) => {
+              .map(({ _id, firstName, lastName, email, status, location }) => {
                 return (
-                  <div className={"rowContainer"}>
+                  <div key={_id} className={"rowContainer"}>
                     <div className={"contactRow"}>
                       <div className={"colEmail"}>{email}</div>
                       <div className={"col"}>{firstName}</div>
