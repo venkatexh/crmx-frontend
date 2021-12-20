@@ -10,7 +10,8 @@ const NewCampaign = () => {
   const [text, setText] = useState("");
   const [html, setHtml] = useState("");
   const [from, setFrom] = useState("");
-  const [currentState, setCurrentState] = useState(0);
+  const [createdCampaign, setCreatedCampaign] = useState(null);
+  const [currentState, setCurrentState] = useState(2);
 
   const handleTagAddition = (tag) => {
     if (tags.filter((t) => t.id === tag._id).length > 0) {
@@ -45,12 +46,13 @@ const NewCampaign = () => {
       handleTextChange={(e) => setText(e.target.value)}
       handleHtmlChange={(e) => setHtml(e.target.value)}
       handleFromChange={e => setFrom(e.target.value)}
+      handleCurrentCampaign={id => setCreatedCampaign(id)}
       handleStateChange={() => setCurrentState(currentState + 1)}
       handlePrevState={() => setCurrentState(currentState - 1)}
     />
   );
 
-  stateMap.set(2, <ThirdState/>);
+  stateMap.set(2, <ThirdState campaignId={createdCampaign}/>);
 
   const componentToRender = () => {
     return stateMap.get(currentState);

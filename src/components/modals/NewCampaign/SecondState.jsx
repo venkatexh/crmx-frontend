@@ -18,6 +18,7 @@ const SecondState = ({
                        handleSubjectChange,
                        handleFromChange,
                        handlePrevState,
+                       handleCurrentCampaign
                      }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -73,6 +74,7 @@ const SecondState = ({
         .then((res) => {
           if (res.status === 200) {
             dispatch(updateCampaigns([...state.campaigns, res.data]));
+            handleCurrentCampaign(res.data._id);
             handleStateChange();
           }
         })
