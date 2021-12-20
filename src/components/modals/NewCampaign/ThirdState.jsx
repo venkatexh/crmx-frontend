@@ -5,7 +5,7 @@ import {useState} from "react";
 const ThirdState = ({campaignId}) => {
 
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const sendCampaign = async () => {
