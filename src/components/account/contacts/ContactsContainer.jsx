@@ -11,13 +11,11 @@ const ContactsContainer = () => {
     contacts,
   }));
   useEffect(() => {
-    if (state.contacts.length === 0) {
       setLoading(true);
       setTimeout(() => {
         dispatch(saveContacts(state.loggedUser.id));
         setLoading(false);
       }, 1000);
-    }
   }, []);
 
   return (
