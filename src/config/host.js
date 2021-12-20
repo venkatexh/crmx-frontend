@@ -1,5 +1,5 @@
 const hostHeader = {
-  url: "http://localhost:4000",
+  url: process.env.REACT_APP_HOST_HEADER,
 };
 
 export default hostHeader;
