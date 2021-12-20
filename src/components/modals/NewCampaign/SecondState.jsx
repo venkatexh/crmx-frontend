@@ -1,22 +1,24 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import "../../../sass/components/modals/newCampaign.scss";
 import Axios from "axios";
 import hostHeader from "../../../config/host";
-import { useDispatch, useSelector } from "react-redux";
-import { updateCampaigns } from "../../../redux/actions/account/updateCampaigns";
+import {useDispatch, useSelector} from "react-redux";
+import {updateCampaigns} from "../../../redux/actions/account/updateCampaigns";
 
 const SecondState = ({
-  name,
-  tags,
-  subject,
-  text,
-  html,
-  handleTextChange,
-  handleHtmlChange,
-  handleStateChange,
-  handleSubjectChange,
-  handlePrevState,
-}) => {
+                       name,
+                       tags,
+                       subject,
+                       from,
+                       text,
+                       html,
+                       handleTextChange,
+                       handleHtmlChange,
+                       handleStateChange,
+                       handleSubjectChange,
+                       handleFromChange,
+                       handlePrevState,
+                     }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailType, setEmailType] = useState(0);
@@ -24,7 +26,7 @@ const SecondState = ({
 
   const dispatch = useDispatch();
 
-  const state = useSelector(({ loggedUser, campaigns }) => ({
+  const state = useSelector(({loggedUser, campaigns}) => ({
     loggedUser,
     campaigns,
   }));
@@ -59,6 +61,7 @@ const SecondState = ({
         name,
         tags: tags.map((tag) => tag.id),
         subject,
+        from,
         text,
         html,
         sentTo: sendTo,
@@ -103,6 +106,17 @@ const SecondState = ({
               onChange={(e) => {
                 setErrorMessage("");
                 handleSubjectChange(e);
+              }}
+            />
+          </div>
+          <div>
+            <input
+              className={"modalInput inputLarge"}
+              value={from}
+              placeholder={"From"}
+              onChange={(e) => {
+                setErrorMessage("");
+                handleFromChange(e);
               }}
             />
           </div>
