@@ -1,5 +1,4 @@
 import { useState } from "react";
-import hostHeader from "../../config/host";
 import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
 import { toggleModal } from "../../redux/actions/utility/toggleModal";
@@ -37,7 +36,7 @@ const NewContact = () => {
         status,
       };
       Axios.post(
-        `${hostHeader.url}/api/user/${state.loggedUser.id}/contacts`,
+        `/api/user/${state.loggedUser.id}/contacts`,
         contact
       )
         .then((res) => {

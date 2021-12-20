@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/auth/signin";
 import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
-import hostHeader from "../../config/host";
 import { withRouter } from "react-router";
 
 const LoginForm = (props) => {
@@ -27,7 +26,7 @@ const LoginForm = (props) => {
         email,
         password,
       };
-      Axios.post(`${hostHeader.url}/api/auth/signin`, user)
+      Axios.post('/api/auth/signin', user)
         .then((res) => {
           if (res.status === 200) {
             sessionStorage.setItem("loggedUser", JSON.stringify(res.data));
@@ -43,7 +42,7 @@ const LoginForm = (props) => {
 
   const handleGoogleLogin = (googleData) => {
     console.log(googleData);
-    Axios.post(`${hostHeader.url}/api/auth/google`, {
+    Axios.post('/api/auth/google', {
       idToken: googleData.tokenId,
       accessToken: googleData.accessToken,
     })
