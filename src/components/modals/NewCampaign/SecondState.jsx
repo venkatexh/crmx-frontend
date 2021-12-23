@@ -3,6 +3,7 @@ import "../../../sass/components/modals/newCampaign.scss";
 import Axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {updateCampaigns} from "../../../redux/actions/account/updateCampaigns";
+import hostHeader from "../../../config/host";
 
 const SecondState = ({
                        name,
@@ -34,7 +35,7 @@ const SecondState = ({
   useEffect(() => {
     setLoading(true);
     for (const tag of tags) {
-      Axios.get('/api/tag/${tag.id}/contacts')
+      Axios.get(`${hostHeader.url}/api/tag/${tag.id}/contacts`)
         .then((res) => {
           setSendTo((prevState) => [...prevState, ...res.data]);
           setLoading(false);
@@ -67,7 +68,7 @@ const SecondState = ({
         sentTo: sendTo,
       };
       Axios.post(
-        '/api/user/${state.loggedUser.id}/campaigns',
+        `${hostHeader.url}/api/user/${state.loggedUser.id}/campaigns`,
         campaign
       )
         .then((res) => {

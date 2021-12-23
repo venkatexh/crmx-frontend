@@ -1,5 +1,6 @@
 import Axios from "axios";
 import {useState} from "react";
+import hostHeader from "../../../config/host";
 
 const ThirdState = ({campaignId}) => {
 
@@ -9,7 +10,7 @@ const ThirdState = ({campaignId}) => {
 
   const sendCampaign = async () => {
     setLoading(true)
-    Axios.post('/api/email/send',
+    Axios.post(`${hostHeader.url}/api/email/send`,
       {campaignId}).then(res => {
         if(res.status === 200) {
           setSuccess(true);
