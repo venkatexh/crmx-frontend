@@ -1,0 +1,53 @@
+.contactHeader {
+  margin: 3rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      font-size: 48px;
+    }
+  }
+
+  .middle {
+
+  }
+
+  .right {
+
+  }
+
+
+}
+
+.contactBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 2rem 5rem;
+
+  .heading {
+    font-size: 32px;
+  }
+
+  .left {
+    width: 75%;
+  }
+
+  .right {
+    width: 25%;
+
+    .tagsList {
+      display: flex;
+      flex-wrap: wrap;
+
+      .contactTag {
+
+      }
+    }
+  }
+}

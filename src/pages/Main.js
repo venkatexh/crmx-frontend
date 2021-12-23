@@ -8,6 +8,7 @@ import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import { useSelector } from "react-redux";
 import Account from "./index/Account";
+import Contact from "./contact";
 
 const Main = () => {
   const state = useSelector(({ loggedUser }) => ({ loggedUser }));
@@ -33,6 +34,7 @@ const Main = () => {
           <Redirect to={"/account"} />
         </Route>
         <Route exact path={"/account"} component={Account} />
+        <Route exact path={'/contact/:id'} component={Contact} />
         <Redirect to={"/"} />
       </Switch>
     );

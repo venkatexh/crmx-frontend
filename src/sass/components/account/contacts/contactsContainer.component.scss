@@ -16,19 +16,25 @@
     overflow-y: scroll;
   }
 
-  .rowContainer {
-    cursor: pointer;
+  .contactLink {
+    text-decoration: none;
+    color: #000000;
 
-    .contactRow {
-      height: 44px;
-      display: flex;
-      align-items: center;
-      padding-left: 12px;
+    .rowContainer {
+      cursor: pointer;
+
+      .contactRow {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        padding-left: 12px;
+        text-decoration: none;
+      }
     }
-  }
 
-  .rowContainer:hover {
-    background: #f2f2f2;
+    .rowContainer:hover {
+      background: #f2f2f2;
+    }
   }
 
   .col {
@@ -47,7 +53,7 @@
   }
 }
 
-.loading{
+.loading {
   display: flex;
   justify-content: center;
   align-items: center;
