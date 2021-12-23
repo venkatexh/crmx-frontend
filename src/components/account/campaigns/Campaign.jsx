@@ -1,4 +1,6 @@
 import "../../../sass/components/account/campaigns/campaign.component.scss";
+import {Link} from "react-router-dom";
+
 const colors = {
   draft: "#e8eded",
   paused: "#e8eded",
@@ -7,12 +9,12 @@ const colors = {
   failed: "#d6063a",
 };
 
-const Campaign = ({ name, status, scheduledAt, sentAt, sentTo }) => {
+const Campaign = ({name, status, scheduledAt, sentAt, sentTo, id}) => {
   return (
     <div className={"campaign"}>
       <div className={"top"}>
         <div className={"name"}>{name}</div>
-        <div className={"status"} style={{ background: colors[status] }}>
+        <div className={"status"} style={{background: colors[status]}}>
           {status}
         </div>
       </div>
@@ -22,14 +24,14 @@ const Campaign = ({ name, status, scheduledAt, sentAt, sentTo }) => {
             {status === "sent"
               ? `Sent ${sentAt}`
               : status === "scheduled"
-              ? `Scheduled at ${scheduledAt}`
-              : ""}
+                ? `Scheduled at ${scheduledAt}`
+                : ""}
           </div>
           <div>{sentTo.length} recipients</div>
         </div>
-        <div>
-          <button className={"button"}>View Campaign</button>
-        </div>
+        <Link to={`/campaign/${id}`}>
+          <button className={"button"}>Schedule</button>
+        </Link>
       </div>
     </div>
   );

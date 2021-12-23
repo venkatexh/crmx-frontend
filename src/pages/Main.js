@@ -1,28 +1,24 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-dom";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import Account from "./index/Account";
 import Contact from "./contact";
+import Campaign from "./Campaign";
 
 const Main = () => {
-  const state = useSelector(({ loggedUser }) => ({ loggedUser }));
+  const state = useSelector(({loggedUser}) => ({loggedUser}));
   console.log(state);
 
   const nonSessionRoutes = () => {
     return (
       <Switch>
         <Route exact path={"/"}>
-          <Redirect to={"/login"} />
+          <Redirect to={"/login"}/>
         </Route>
-        <Route exact path={"/login"} component={Login} />
-        <Route exact path={"/signup"} component={Signup} />
-        <Redirect to={"/"} />
+        <Route exact path={"/login"} component={Login}/>
+        <Route exact path={"/signup"} component={Signup}/>
+        <Redirect to={"/"}/>
       </Switch>
     );
   };
@@ -31,11 +27,12 @@ const Main = () => {
     return (
       <Switch>
         <Route exact path={"/"}>
-          <Redirect to={"/account"} />
+          <Redirect to={"/account"}/>
         </Route>
-        <Route exact path={"/account"} component={Account} />
-        <Route exact path={'/contact/:id'} component={Contact} />
-        <Redirect to={"/"} />
+        <Route exact path={"/account"} component={Account}/>
+        <Route exact path={'/contact/:id'} component={Contact}/>
+        <Route exact path={'/campaign/:id'} component={Campaign}/>
+        <Redirect to={"/"}/>
       </Switch>
     );
   };
