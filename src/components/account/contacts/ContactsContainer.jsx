@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {saveContacts} from "../../../redux/actions/account/saveContacts";
 import "../../../sass/components/account/contacts/contactsContainer.component.scss";
 import Link from "react-router-dom/es/Link";
+import {saveTags} from "../../../redux/actions/account/saveTags";
 
 const ContactsContainer = () => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +18,7 @@ const ContactsContainer = () => {
     setLoading(true);
     setTimeout(() => {
       dispatch(saveContacts(state.loggedUser.id));
+      dispatch(saveTags(state.loggedUser.id))
       setLoading(false);
     }, 1000);
   }, []);

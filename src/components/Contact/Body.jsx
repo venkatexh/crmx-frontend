@@ -12,7 +12,7 @@ const Body = ({contact}) => {
         <div className={'tagsList'}>
           {
             tags?.map((tag, idx) => {
-              return <div className={'contactTag'} key={idx}>{tag}</div>
+              return <div className={'contactTag'} key={idx}>{tag.name}</div>
             })
           }
         </div>
