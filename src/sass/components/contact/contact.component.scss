@@ -27,8 +27,39 @@
     cursor: pointer;
   }
 
+  .actionDropdown {
+    position: absolute;
+    height: 60px;
+    width: 140px;
+    border: 1px solid #454745;
+
+    .actionOption {
+      height: 30px;
+      width: 140px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .optionText {
+        padding: 0 20px;
+      }
+    }
+
+    .actionOption:hover {
+      background: #b55dfc;
+      color: #ffffff;
+    }
+  }
+
+  .subscribed {
+    background: #27d417;
+  }
+
+  .unsubscribed {
+    background: #db1a04;
+  }
+
   .contactStatus {
-    background-color: #27d417;
     color: #ffffff;
     padding: 5px 15px;
     font-weight: 500;

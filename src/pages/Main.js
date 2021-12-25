@@ -5,10 +5,11 @@ import {useSelector} from "react-redux";
 import Account from "./index/Account";
 import Contact from "./contact";
 import Campaign from "./Campaign";
+import "../sass/components/account/main.component.scss";
+import Confirmation from "../components/modals/Confirmation";
 
 const Main = () => {
-  const state = useSelector(({loggedUser}) => ({loggedUser}));
-  console.log(state);
+  const state = useSelector(({loggedUser, confirmationData}) => ({loggedUser, confirmationData}));
 
   const nonSessionRoutes = () => {
     return (
@@ -45,7 +46,15 @@ const Main = () => {
     }
   };
 
-  return <Router>{routesToReturn()}</Router>;
+  return (
+    <div className={'main'}>
+      <Router>{routesToReturn()}</Router>
+      {
+        state.confirmationData ?
+          <Confirmation payload={state.confirmationData}/> : <></>
+      }
+    </div>
+  );
 };
 
 export default Main;
