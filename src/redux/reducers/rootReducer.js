@@ -1,15 +1,17 @@
-import { combineReducers } from "redux";
-import { loggedUser } from "./auth/loggedUser";
-import { accountWindow } from "./account/accountWindow";
-import { contacts } from "./account/contacts";
-import { modalState } from "./utility/modalState";
-import { campaigns } from "./account/campaigns";
-import { tags } from "./account/tags";
+import {combineReducers} from "redux";
+import {loggedUser} from "./auth/loggedUser";
+import {accountWindow} from "./account/accountWindow";
+import {contacts} from "./account/contacts";
+import {modalState} from "./utility/modalState";
+import {campaigns} from "./account/campaigns";
+import {tags} from "./account/tags";
+import {selectedContact} from "./contact/selectedContact";
 
 const reducer = combineReducers({
   loggedUser,
   accountWindow,
   contacts,
+  selectedContact,
   campaigns,
   tags,
   modalState,

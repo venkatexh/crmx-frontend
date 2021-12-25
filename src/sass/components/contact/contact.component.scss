@@ -11,6 +11,28 @@
     .name {
       font-size: 48px;
     }
+
+    .email {
+      font-weight: 400;
+      font-size: 24px;
+    }
+  }
+
+  .actionsButton {
+    background: #b8bab8;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 5px 20px;
+    border: 1px solid #454745;
+    cursor: pointer;
+  }
+
+  .contactStatus {
+    background-color: #27d417;
+    color: #ffffff;
+    padding: 5px 15px;
+    font-weight: 500;
+    border-radius: 10px;
   }
 
   .middle {
@@ -20,8 +42,6 @@
   .right {
 
   }
-
-
 }
 
 .contactBody {
@@ -32,6 +52,7 @@
 
   .heading {
     font-size: 32px;
+    margin-bottom: 2rem;
   }
 
   .left {
@@ -46,7 +67,20 @@
       flex-wrap: wrap;
 
       .contactTag {
+        background: #e8eded;
+        padding: 5px 20px;
+        margin: 10px 20px 0 0;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
 
+        .tagName {
+          margin-right: 10px;
+        }
+
+        .cross {
+          cursor: pointer;
+        }
       }
     }
   }

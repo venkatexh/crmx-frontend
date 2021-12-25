@@ -5,6 +5,8 @@ const actionTypes = {
   SAVE_CAMPAIGNS: "SAVE_CAMPAIGNS",
   SAVE_TAGS: "SAVE_TAGS",
   TOGGLE_MODAL: "TOGGLE_MODAL",
+  FETCH_CONTACT: "FETCH_CONTACT",
+  UPDATE_CONTACT: "UPDATE_CONTACT"
 };
 
 export default actionTypes;
