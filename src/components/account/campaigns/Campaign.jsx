@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 const colors = {
   draft: "#e8eded",
   paused: "#e8eded",
-  sent: "#6ef589",
-  scheduled: "#ebe660",
+  Sent: "#6ef589",
+  Scheduled: "#ebe660",
   failed: "#d6063a",
 };
 
@@ -29,9 +29,19 @@ const Campaign = ({name, status, scheduledAt, sentAt, sentTo, id}) => {
           </div>
           <div>{sentTo.length} recipients</div>
         </div>
-        <Link to={`/campaign/${id}`}>
-          <button className={"button"}>Schedule</button>
-        </Link>
+        <div className={'buttonsContainer'}>
+          {
+            status === 'draft' ? <button className={"button"}>Send Now</button> : <></>
+          }
+          {
+            status === 'Sent' ?
+              <Link to={`/campaign/${id}`}>
+                <button className={"button"}>View Campaign</button>
+              </Link>
+              :
+              <button className={"button"}>Schedule</button>
+          }
+        </div>
       </div>
     </div>
   );
