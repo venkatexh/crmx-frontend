@@ -88,6 +88,46 @@
 
   .left {
     width: 75%;
+
+    .activityContainer {
+      width: 90%;
+
+      .activityCard {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 0;
+
+        .activityCardLeft {
+          display: flex;
+          align-items: center;
+          width: 40%;
+          flex-wrap: wrap;
+
+          .activityIcon {
+            height: 24px;
+            margin-right: 10px;
+          }
+        }
+
+        .activityCardMiddle {
+          width: 30%;
+          display: flex;
+          justify-content: center;
+
+          .longArrow {
+            width: 72px;
+            height: 48px;
+          }
+        }
+
+        .activityCardRight {
+          width: 30%;
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
   }
 
   .right {

@@ -3,9 +3,10 @@ import hostHeader from "../../config/host";
 import Axios from "axios";
 import {updateContact} from "../../redux/actions/contact/updateContact";
 import {useDispatch} from "react-redux";
+import Activity from "./Activity";
 
 const Body = ({contact}) => {
-  const {tags} = contact;
+  const {tags, activities} = contact;
   const dispatch = useDispatch();
 
   const handleTagRemoval = (tagId) => {
@@ -16,11 +17,11 @@ const Body = ({contact}) => {
       }
     }).then(r => {
         if (r.status === 200) {
-          console.log(r.data)
           dispatch(updateContact(r.data));
         }
       }
     ).catch(err => {
+      console.log(err);
     })
   }
 
@@ -28,6 +29,11 @@ const Body = ({contact}) => {
     <div className={'contactBody'}>
       <div className={'left'}>
         <div className={'heading'}>Activity</div>
+        <div className={'activityContainer'}>
+          {
+            activities?.reverse().map((activity) => <Activity activity={activity} key={activity.id}/>)
+          }
+        </div>
       </div>
       <div className={'right'}>
         <div className={'heading'}>Tags</div>
