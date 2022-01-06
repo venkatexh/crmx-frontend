@@ -8,6 +8,10 @@ const Activity = ({activity}) => {
       return 'plus';
     } else if (type === 'Campaign') {
       return 'email';
+    } else if (type === 'Subscribed') {
+      return 'subscribe';
+    } else if (type === 'Unsubscribed') {
+      return 'unsubscribe';
     }
   }
 
@@ -27,6 +31,20 @@ const Activity = ({activity}) => {
           <div>{text}</div>
         </div>
       );
+    } else if (type === 'Subscribed') {
+      return (
+        <div className={'activityCardLeft'}>
+          <img src={`/icons/${iconType()}.png`} className={'activityIcon'} alt={'icon'}/>
+          <div>Contact was subscribed</div>
+        </div>
+      )
+    } else if (type === 'Unsubscribed') {
+      return (
+        <div className={'activityCardLeft'}>
+          <img src={`/icons/${iconType()}.png`} className={'activityIcon'} alt={'icon'}/>
+          <div>Contact was unsubscribed</div>
+        </div>
+      )
     }
   }
   return <>
