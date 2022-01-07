@@ -1,5 +1,5 @@
 import Growth from "./Growth";
-import "../../../sass/components/account/dashboard/container.component.scss";
+import "../../../sass/components/home/dashboard/container.component.scss";
 import Tags from "./Tags";
 
 const Container = () => {
@@ -7,8 +7,8 @@ const Container = () => {
     <div className={"dashContainer"}>
       <div className={"headerText"}>Your business at a glance</div>
       <div className={"flexBox"}>
-        <Growth />
-        <Tags />
+        <Growth/>
+        <Tags/>
       </div>
     </div>
   );

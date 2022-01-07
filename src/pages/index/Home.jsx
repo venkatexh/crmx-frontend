@@ -1,19 +1,19 @@
 import LeftNav from "../../components/navigation/LeftNav";
-import "../../sass/pages/account.page.scss";
-import Dashboard from "../account/Dashboard";
-import Contacts from "../account/Contacts";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import Campaigns from "../account/Campaigns";
-import Tags from "../account/Tags";
-import Surveys from "../account/Surveys";
-import { login } from "../../redux/actions/auth/signin";
+import "../../sass/pages/home.page.scss";
+import Dashboard from "../home/Dashboard";
+import Contacts from "../home/Contacts";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import Campaigns from "../home/Campaigns";
+import Tags from "../home/Tags";
+import Surveys from "../home/Surveys";
+import {login} from "../../redux/actions/auth/signin";
 import Modal from "../../components/modals/Modal";
 import RightNav from "../../components/navigation/RightNav";
 
-const Account = () => {
+const Home = () => {
   const dispatch = useDispatch();
-  const state = useSelector(({ loggedUser, accountWindow, modalState }) => ({
+  const state = useSelector(({loggedUser, accountWindow, modalState}) => ({
     loggedUser,
     accountWindow,
     modalState,
@@ -26,35 +26,36 @@ const Account = () => {
   const componentToRender = () => {
     switch (state.accountWindow) {
       case "dashboard":
-        return <Dashboard />;
+        return <Dashboard/>;
       case "contacts":
-        return <Contacts />;
+        return <Contacts/>;
       case "campaigns":
-        return <Campaigns />;
+        return <Campaigns/>;
       case "tags":
-        return <Tags />;
+        return <Tags/>;
       case "surveys":
-        return <Surveys />;
+        return <Surveys/>;
       default:
-        return <Dashboard />;
+        return <Dashboard/>;
     }
   };
 
-  useEffect(() => {}, [state.accountWindow]);
+  useEffect(() => {
+  }, [state.accountWindow]);
   return (
     <>
       <div className={"mainContainer"}>
         <div className={"nav"}>
-          <LeftNav />
+          <LeftNav/>
         </div>
         <div className={"body"}>{componentToRender()}</div>
         <div className={"rightCol"}>
-          <RightNav />
+          <RightNav/>
         </div>
-        {state.modalState ? <Modal /> : <></>}
+        {state.modalState ? <Modal/> : <></>}
       </div>
     </>
   );
 };
 
-export default Account;
+export default Home;

@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import "../../../sass/components/account/dashboard/header.component.scss";
-import { Link } from "react-router-dom";
-import { toggleModal } from "../../../redux/actions/utility/toggleModal";
+import {useDispatch} from "react-redux";
+import "../../../sass/components/home/dashboard/header.component.scss";
+import {Link} from "react-router-dom";
+import {toggleModal} from "../../../redux/actions/utility/toggleModal";
 
 const Header = () => {
   // const state = useSelector(({ loggedUser }) => ({ loggedUser }));

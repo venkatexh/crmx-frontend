@@ -1,4 +1,4 @@
-import "../../../sass/components/account/campaigns/campaign.component.scss";
+import "../../../sass/components/home/campaigns/campaign.component.scss";
 import {Link} from "react-router-dom";
 
 const colors = {

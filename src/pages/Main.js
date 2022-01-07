@@ -2,11 +2,13 @@ import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-do
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import {useSelector} from "react-redux";
-import Account from "./index/Account";
+import Account from "./account";
+import Home from "./index/Home";
 import Contact from "./contact";
 import Campaign from "./Campaign";
-import "../sass/components/account/main.component.scss";
+import "../sass/components/home/main.component.scss";
 import Confirmation from "../components/modals/Confirmation";
+import Checkout from "./checkout";
 
 const Main = () => {
   const state = useSelector(({loggedUser, confirmationData}) => ({loggedUser, confirmationData}));
@@ -28,11 +30,13 @@ const Main = () => {
     return (
       <Switch>
         <Route exact path={"/"}>
-          <Redirect to={"/account"}/>
+          <Redirect to={"/home"}/>
         </Route>
-        <Route exact path={"/account"} component={Account}/>
+        <Route exact path={"/home"} component={Home}/>
         <Route exact path={'/contact/:id'} component={Contact}/>
         <Route exact path={'/campaign/:id'} component={Campaign}/>
+        <Route exact path={'/account'} component={Account}/>
+        <Route exact path={'/checkout'} component={Checkout}/>
         <Redirect to={"/"}/>
       </Switch>
     );

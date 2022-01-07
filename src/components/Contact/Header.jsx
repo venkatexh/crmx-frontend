@@ -17,7 +17,7 @@ const Header = ({contact}) => {
     Axios.delete(`${hostHeader.url}/api/contact/${contact._id}`).then(r => {
       if (r.status === 200) {
         dispatch(toggleConfirmationModal(null));
-        history.push('/account');
+        history.push('/home');
       }
     })
   }

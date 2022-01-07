@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {saveContacts} from "../../../redux/actions/account/saveContacts";
-import "../../../sass/components/account/contacts/contactsContainer.component.scss";
+import "../../../sass/components/home/contacts/contactsContainer.component.scss";
 import Link from "react-router-dom/es/Link";
 import {saveTags} from "../../../redux/actions/account/saveTags";
 

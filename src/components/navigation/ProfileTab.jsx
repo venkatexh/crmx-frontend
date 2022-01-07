@@ -1,9 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/actions/auth/signin";
+import {useDispatch, useSelector} from "react-redux";
+import {login} from "../../redux/actions/auth/signin";
+import {useHistory} from "react-router";
 
 const ProfileTab = () => {
-  const state = useSelector(({ loggedUser }) => ({ loggedUser }));
+  const state = useSelector(({loggedUser}) => ({loggedUser}));
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const logUserOut = () => {
     sessionStorage.clear();
@@ -25,7 +27,7 @@ const ProfileTab = () => {
       </div>
       <div className={"menu"}>
         <div className={"menu-item"}>Profile</div>
-        <div className={"menu-item"}>Account</div>
+        <div className={"menu-item"} onClick={() => history.push('/account')}>Account</div>
         <div className={"menu-item"} onClick={logUserOut}>
           Log Out
         </div>

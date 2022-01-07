@@ -1,6 +1,6 @@
-import "../../../sass/components/account/tags/tag.component.scss";
+import "../../../sass/components/home/tags/tag.component.scss";
 
-const Tag = ({ name, length, createdAt, updatedAt }) => {
+const Tag = ({name, length, createdAt, updatedAt}) => {
   return (
     <div className={"tag"}>
       <div className={"left"}>

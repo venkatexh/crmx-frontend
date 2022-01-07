@@ -1,0 +1,50 @@
+.planCard {
+  width: 25%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #b55dfc;
+  border-radius: 50px;
+  margin: 0 1rem;
+  padding: 2rem;
+  text-align: center;
+
+  .planName {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .planPrice {
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .planRate {
+    margin-bottom: 1rem;
+  }
+
+  .planFeatures {
+    opacity: 0.6;
+  }
+
+  .upgradeButton {
+    width: 120px;
+    height: 32px;
+    border: none;
+    background: #b55dfc;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .currentButton {
+    width: 120px;
+    height: 32px;
+    border: 1px solid #b55dfc;
+  }
+}

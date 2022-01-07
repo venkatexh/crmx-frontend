@@ -1,11 +1,11 @@
-import "../../../sass/components/account/dashboard/card.component.scss";
+import "../../../sass/components/home/dashboard/card.component.scss";
 
-const Card = ({ children, headerText, link1_text, link2_text }) => {
+const Card = ({children, headerText, link1_text, link2_text}) => {
   return (
     <div className={"card"}>
       <div className={"header"}>
         <div className={"headerText"}>{headerText}</div>
-        <img src={""} alt={""} />
+        <img src={""} alt={""}/>
       </div>
       <div className={"cardBody"}>{children}</div>
       <div className={"ctaContainer"}>

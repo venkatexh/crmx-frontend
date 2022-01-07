@@ -7,6 +7,7 @@ import {campaigns} from "./account/campaigns";
 import {tags} from "./account/tags";
 import {selectedContact} from "./contact/selectedContact";
 import {confirmationData} from "./utility/confirmationData";
+import {selectedPlan} from "./plan/selectedPlan";
 
 const reducer = combineReducers({
   loggedUser,
@@ -16,7 +17,8 @@ const reducer = combineReducers({
   campaigns,
   tags,
   modalState,
-  confirmationData
+  confirmationData,
+  selectedPlan
 });
 
 const rootReducer = (state, action) => {

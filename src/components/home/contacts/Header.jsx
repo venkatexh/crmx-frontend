@@ -1,18 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import "../../../sass/components/account/dashboard/header.component.scss";
-import { Link } from "react-router-dom";
-import { changeWindow } from "../../../redux/actions/account/changeWindow";
+import {useDispatch, useSelector} from "react-redux";
+import "../../../sass/components/home/dashboard/header.component.scss";
+import {Link} from "react-router-dom";
+import {toggleModal} from "../../../redux/actions/utility/toggleModal";
 
 const Header = () => {
-  const state = useSelector(({ loggedUser }) => ({ loggedUser }));
+  const state = useSelector(({loggedUser}) => ({loggedUser}));
   const dispatch = useDispatch();
+  const modalType = "new-contact";
   const handleClick = () => {
-    dispatch(changeWindow("contacts"));
+    dispatch(toggleModal(modalType));
   };
   return (
     <div className={"dashHeader"}>
       <div>
-        <div className={"greeting"}>Hi {state.loggedUser.firstName}!</div>
+        <div className={"greeting"}>Contacts</div>
         <div className={"contactCount"}>
           You have <span className={"highlight"}>1414</span> contacts in{" "}
           {state.loggedUser.company}
@@ -21,7 +22,7 @@ const Header = () => {
       <div>
         <Link to={"contacts"}>
           <button className={"viewContactsBtn"} onClick={() => handleClick()}>
-            View Contacts
+            New Contact
           </button>
         </Link>
       </div>
