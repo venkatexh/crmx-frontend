@@ -1,39 +1,21 @@
 import PlanCard from "../../components/Plan/PlanCard";
 import '../../sass/pages/account.page.scss';
+import {planData} from './planData';
 import {useState} from "react";
 
 const Account = () => {
-  const plans = [
-    {
-      name: 'Free',
-      price: '$0',
-      description: 'Basic home to get started with your marketing efforts'
-    },
-    {
-      name: 'Standard',
-      price: '$99',
-      description: 'With more features to enhance your ideas'
-    },
-    {
-      name: 'Pro',
-      price: '$299',
-      description: 'With advanced tools for large businesses'
-    }
-  ]
-
-  const [rate, changeRate] = useState('Per Month')
-
+  const [rate, changeRate] = useState('Per Month');
   return (
     <div className={'planPage'}>
       <div className={'plansContainer'}>
         {
-          plans.map(plan => (
+          planData.map((plan, idx) => (
             <PlanCard name={plan.name} price={plan.price} rate={rate} description={plan.description}
-                      action={'Upgrade'}/>))
+                      action={'Upgrade'} key={idx}/>))
         }
       </div>
     </div>
-  )
+  );
 }
 
 export default Account;

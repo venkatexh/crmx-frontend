@@ -46,6 +46,7 @@ const Container = () => {
                       sentAt={sentAt}
                       sentTo={sentTo}
                       id={_id}
+                      key={_id}
                     />
                   );
                 }

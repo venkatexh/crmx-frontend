@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {saveContacts} from "../../../redux/actions/account/saveContacts";
 import "../../../sass/components/home/contacts/contactsContainer.component.scss";
-import Link from "react-router-dom/es/Link";
+import {Link} from "react-router-dom";
 import {saveTags} from "../../../redux/actions/account/saveTags";
 
 const ContactsContainer = () => {
@@ -50,8 +50,8 @@ const ContactsContainer = () => {
               .reverse()
               .map(({_id, firstName, lastName, email, status, location}) => {
                 return (
-                  <Link to={`/contact/${_id}`} className={'contactLink'}>
-                    <div key={_id} className={"rowContainer"}>
+                  <Link to={`/contact/${_id}`} className={'contactLink'} key={_id}>
+                    <div className={"rowContainer"}>
                       <div className={"contactRow"}>
                         <div className={"colEmail"}>{email}</div>
                         <div className={"col"}>{firstName}</div>

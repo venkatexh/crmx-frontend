@@ -37,10 +37,10 @@ const Container = () => {
           ) : (
             <div>
               {state.tags.map(
-                ({id, name, contacts, createdAt, updatedAt}) => {
+                ({_id, name, contacts, createdAt, updatedAt}) => {
                   return (
                     <Tag
-                      key={id}
+                      key={_id}
                       name={name}
                       length={contacts.length}
                       createdAt={createdAt}
