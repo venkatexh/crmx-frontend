@@ -3,10 +3,17 @@ import '../../sass/pages/account.page.scss';
 import {planData} from './planData';
 import {useState} from "react";
 import CurrentPlanCard from "../../components/Plan/CurrentPlanCard";
+import PlanFeaturesCard from "../../components/Plan/PlanFeaturesCard";
+import {planFeatures} from "../../components/Plan/planFeatures";
 
 const Account = () => {
   const [rate, changeRate] = useState('Per Month');
   const [curr, setCurr] = useState(0);
+  const [selectedPlan, setSelectedPlan] = useState(0);
+
+  const handleViewDetails = (plan) => {
+    setSelectedPlan(plan);
+  }
 
   const componentToRender = () => {
     if (curr === 0) {
@@ -17,9 +24,11 @@ const Account = () => {
             {
               planData.map((plan, idx) => (
                 <PlanCard name={plan.name} price={plan.price} rate={rate} description={plan.description}
-                          action={'Upgrade'} key={idx}/>))
+                          action={'Upgrade'} key={idx} idx={idx} handleClick={handleViewDetails}
+                          selected={selectedPlan}/>))
             }
           </div>
+          <PlanFeaturesCard plan={planFeatures[selectedPlan]}/>
         </div>
       )
     } else if (curr === 1) {

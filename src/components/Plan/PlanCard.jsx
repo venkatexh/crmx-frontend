@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import {useHistory} from "react-router";
 import {fetchStripeSecret} from "../../redux/actions/plan/fetchStripeSecret";
 
-const PlanCard = ({name, price, rate, action, description, features}) => {
+const PlanCard = ({name, price, rate, action, description, features, handleClick, idx, selected}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const handleActionClick = async () => {
@@ -18,7 +18,7 @@ const PlanCard = ({name, price, rate, action, description, features}) => {
   }
 
   return (
-    <div className={'planCard'}>
+    <div className={`${selected === idx ? 'selectedPlanCard' : ''} planCard`}>
       <div className={'planName'}>{name}</div>
       <div>
         <div className={'planPrice'}>{price}</div>
@@ -30,6 +30,7 @@ const PlanCard = ({name, price, rate, action, description, features}) => {
         <button className={`${action === 'Upgrade' ? 'upgradeButton' : 'currentButton'}`}
                 onClick={handleActionClick}>{action}</button>
       </div>
+      <div className={'viewDetails'} onClick={() => handleClick(idx)}>View Plan Details</div>
     </div>
   )
 }

@@ -1,21 +1,16 @@
 .planPage {
-
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
 
   .accountNav {
-    height: 60vh;
-    width: 240px;
-    position: fixed;
+    width: 100%;
+    display: flex;
     background: #e8eded;
-    margin: 20vh 0;
+    margin: 2rem auto;
 
     .navItem {
-      width: 100%;
       font-size: 21px;
-      padding: 0.5rem 0;
+      padding: 0.5rem 2rem;
 
       .itemText {
         padding: 1rem;
@@ -34,8 +29,8 @@
   }
 
   .parentContainer {
-    width: 80%;
-    margin: 4rem 0 3rem auto;
+    width: 100%;
+    margin: 3rem auto;
   }
 
   .plansContainer {

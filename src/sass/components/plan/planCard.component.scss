@@ -5,11 +5,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #b55dfc;
   border-radius: 50px;
   margin: 0 1rem;
-  padding: 2rem;
+  padding: 2rem 2.5rem;
   text-align: center;
+  box-shadow: 4px 4px 36px 4px #e3e3e3;
+  border: 2px solid #ffffff;
+
 
   .planName {
     font-size: 28px;
@@ -28,6 +30,11 @@
 
   .planFeatures {
     opacity: 0.6;
+  }
+
+  .viewDetails {
+    color: #b55dfc;
+    cursor: pointer;
   }
 
   .upgradeButton {
@@ -49,11 +56,15 @@
   }
 }
 
+.selectedPlanCard {
+  border: 2px solid #b55dfc;
+}
+
 .currentPlan {
   width: 80%;
-  padding: 2rem 1rem;
-  border: 1px solid #b55dfc;
-  margin: 0 auto 3rem auto;
+  padding: 2rem 3rem;
+  margin: 0 auto 5rem auto;
+  box-shadow: 6px 6px 36px 4px #e3e3e3;
 
   .currentLeft {
     width: 50%;
@@ -69,6 +80,52 @@
 
     .textBottom {
       margin-top: 1rem;
+    }
+  }
+}
+
+.featuresCard {
+  width: 80%;
+  padding: 2rem 3em;
+  margin: 4rem auto;
+  box-shadow: 6px 6px 36px 4px #e3e3e3;
+
+  .planName {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 3rem;
+  }
+
+  .featuresContainer {
+    display: flex;
+
+    .featuresLeft {
+      width: 50%;
+
+      .counts {
+        opacity: 0.6;
+        font-size: 21px;
+      }
+    }
+
+    .featuresRight {
+      width: 50%;
+
+      .feature {
+        font-size: 21px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .featureText {
+          opacity: 0.6;
+        }
+
+        .icon {
+          height: 20px;
+          margin-right: 12px;
+        }
+      }
     }
   }
 }
