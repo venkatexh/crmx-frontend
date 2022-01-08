@@ -1,5 +1,5 @@
 .planCard {
-  width: 25%;
+  width: 20%;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -46,5 +46,29 @@
     width: 120px;
     height: 32px;
     border: 1px solid #b55dfc;
+  }
+}
+
+.currentPlan {
+  width: 80%;
+  padding: 2rem 1rem;
+  border: 1px solid #b55dfc;
+  margin: 0 auto 3rem auto;
+
+  .currentLeft {
+    width: 50%;
+
+    .textTop {
+      opacity: 0.5;
+    }
+
+    .textMid {
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .textBottom {
+      margin-top: 1rem;
+    }
   }
 }

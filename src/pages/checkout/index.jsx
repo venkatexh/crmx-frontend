@@ -1,31 +1,38 @@
 import {useSelector} from "react-redux";
 import '../../sass/pages/checkout.page.scss';
-import StripeCheckout from "react-stripe-checkout";
-import hostHeader from "../../config/host";
-import {useHistory} from "react-router";
-import Axios from "axios";
+import {Elements} from '@stripe/react-stripe-js';
+import CheckoutForm from "../../components/checkout/CheckoutForm";
+import {loadStripe} from "@stripe/stripe-js";
 
 const Checkout = () => {
-  const state = useSelector(({selectedPlan, currentPlan, loggedUser}) => ({selectedPlan, currentPlan, loggedUser}));
-  const stripePrice = state.selectedPlan.price * 100;
+  const state = useSelector(({selectedPlan, currentPlan, loggedUser, stripeSecret}) => ({
+    selectedPlan,
+    currentPlan,
+    loggedUser,
+    stripeSecret
+  }));
   const {currentPlan, selectedPlan} = state;
-  const history = useHistory();
-  const onToken = (token) => {
-    console.log(token)
-    Axios.post(`${hostHeader.url}/api/user/change-plan?user_id=${state.loggedUser.id}`, {
-      plan: selectedPlan.name,
-      bill: {
-        type: 'home upgrade',
-        paymentMethod: 'card',
-        amount: selectedPlan.price,
-        payeeEmail: state.loggedUser.email
-      }
-    }).then(res => {
-      if (res.status === 200) {
-        history.push('/user-plans')
-      }
-    });
+
+  const appearance = {
+    theme: 'stripe',
+    variables: {
+      colorPrimary: '#0570de',
+      colorBackground: '#ffffff',
+      colorText: '#30313d',
+      colorDanger: '#df1b41',
+      fontFamily: 'Ideal Sans, system-ui, sans-serif',
+      spacingUnit: '4px',
+      borderRadius: '4px',
+    },
   }
+
+  const options = {
+    clientSecret: state.stripeSecret,
+    appearance,
+    
+  };
+
+  const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_SITE_KEY);
 
   return (
     <div className={'checkoutPage'}>
@@ -54,15 +61,19 @@ const Checkout = () => {
           </div>
           <hr/>
         </div>
-        <div className={'payButtonContainer'}>
-          <StripeCheckout token={onToken}
-                          stripeKey={process.env.REACT_APP_STRIPE_SITE_KEY}
-                          email={state.loggedUser.email} panelLabel={'Pay Now'} amount={stripePrice}
-                          name={`${selectedPlan.name} Plan`}
-                          description={'CRMX'}/>
-        </div>
       </div>
-      <div></div>
+      {
+        state.stripeSecret === null ?
+          <div className={'paymentLoader'}>
+            <img src={'/loaders/comp_loader.gif'} alt={'loader'} className={'loaderImg'}/>
+          </div>
+          :
+          <div className={'paymentContainer'}>
+            <Elements stripe={stripePromise} options={options}>
+              <CheckoutForm/>
+            </Elements>
+          </div>
+      }
     </div>
   );
 }

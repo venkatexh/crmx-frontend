@@ -1,9 +1,45 @@
 .planPage {
 
   width: 80%;
-  margin: 3rem auto;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  .accountNav {
+    height: 60vh;
+    width: 240px;
+    position: fixed;
+    background: #e8eded;
+    margin: 20vh 0;
+
+    .navItem {
+      width: 100%;
+      font-size: 21px;
+      padding: 0.5rem 0;
+
+      .itemText {
+        padding: 1rem;
+      }
+    }
+
+    .selectedItem {
+      background: #b55dfc;
+      color: white;
+    }
+
+    .unselectedItem:hover {
+      background: #e3e3e3;
+      cursor: pointer;
+    }
+  }
+
+  .parentContainer {
+    width: 80%;
+    margin: 4rem 0 3rem auto;
+  }
 
   .plansContainer {
+    width: 100%;
     display: flex;
     justify-content: center;
   }

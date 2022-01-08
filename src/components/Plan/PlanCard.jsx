@@ -2,11 +2,13 @@ import '../../sass/components/plan/planCard.component.scss'
 import {saveSelectedPlan} from "../../redux/actions/plan/saveSelectedPlan";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router";
+import {fetchStripeSecret} from "../../redux/actions/plan/fetchStripeSecret";
 
 const PlanCard = ({name, price, rate, action, description, features}) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const handleActionClick = () => {
+  const handleActionClick = async () => {
+    await dispatch(fetchStripeSecret(price));
     dispatch(saveSelectedPlan({
       name,
       price,

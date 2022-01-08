@@ -8,6 +8,7 @@ import {tags} from "./account/tags";
 import {selectedContact} from "./contact/selectedContact";
 import {confirmationData} from "./utility/confirmationData";
 import {selectedPlan} from "./plan/selectedPlan";
+import {stripeSecret} from "./plan/stripeSecret";
 
 const reducer = combineReducers({
   loggedUser,
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   tags,
   modalState,
   confirmationData,
-  selectedPlan
+  selectedPlan,
+  stripeSecret
 });
 
 const rootReducer = (state, action) => {
