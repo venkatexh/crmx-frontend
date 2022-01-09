@@ -5,11 +5,13 @@ import {useState} from "react";
 import CurrentPlanCard from "../../components/Plan/CurrentPlanCard";
 import PlanFeaturesCard from "../../components/Plan/PlanFeaturesCard";
 import {planFeatures} from "../../components/Plan/planFeatures";
+import {useSelector} from "react-redux";
 
 const Account = () => {
-  const [rate, changeRate] = useState('Per Month');
+  const [rate, changeRate] = useState('per month');
   const [curr, setCurr] = useState(0);
   const [selectedPlan, setSelectedPlan] = useState(0);
+  const state = useSelector(({loggedUser}) => ({loggedUser}));
 
   const handleViewDetails = (plan) => {
     setSelectedPlan(plan);
@@ -24,8 +26,9 @@ const Account = () => {
             {
               planData.map((plan, idx) => (
                 <PlanCard name={plan.name} price={plan.price} rate={rate} description={plan.description}
-                          action={'Upgrade'} key={idx} idx={idx} handleClick={handleViewDetails}
-                          selected={selectedPlan}/>))
+                          key={idx} idx={idx} handleClick={handleViewDetails}
+                          selected={selectedPlan} userPlan={state.loggedUser.plan.name}
+                          userPlanRank={state.loggedUser.plan.rank}/>))
             }
           </div>
           <PlanFeaturesCard plan={planFeatures[selectedPlan]}/>

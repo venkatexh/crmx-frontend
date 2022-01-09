@@ -1,6 +1,9 @@
 import {PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
+import {useSelector} from "react-redux";
 
 const CheckoutForm = () => {
+  const state = useSelector(({loggedUser}) => ({loggedUser}));
+  const {firstName, lastName, email, billing_address} = state.loggedUser;
   const stripe = useStripe();
   const elements = useElements();
   const options = {
@@ -17,6 +20,13 @@ const CheckoutForm = () => {
       elements,
       confirmParams: {
         return_url: "http://localhost:3000/payment-success-redirect",
+        payment_method_data: {
+          billing_details: {
+            name: `${firstName} ${lastName}`,
+            email,
+            address: billing_address
+          }
+        }
       },
     });
     if (result.error) {
@@ -29,7 +39,7 @@ const CheckoutForm = () => {
       <PaymentElement options={options}/>
       <button disabled={!stripe} className={'payButton'}>Pay Now</button>
     </form>
-  )
+  );
 }
 
 export default CheckoutForm;

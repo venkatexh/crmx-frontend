@@ -9,6 +9,8 @@ import {selectedContact} from "./contact/selectedContact";
 import {confirmationData} from "./utility/confirmationData";
 import {selectedPlan} from "./plan/selectedPlan";
 import {stripeSecret} from "./plan/stripeSecret";
+import storage from 'redux-persist/lib/storage'
+import {persistReducer} from 'redux-persist'
 
 const reducer = combineReducers({
   loggedUser,
@@ -23,6 +25,12 @@ const reducer = combineReducers({
   stripeSecret
 });
 
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['selectedPlan', 'loggedUser']
+}
+
 const rootReducer = (state, action) => {
   if (action.type === "USER_LOGOUT") {
     state = undefined;
@@ -30,4 +38,4 @@ const rootReducer = (state, action) => {
   return reducer(state, action);
 };
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);
