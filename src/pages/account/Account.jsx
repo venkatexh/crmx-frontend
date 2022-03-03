@@ -1,7 +1,7 @@
 import PlanCard from "../../components/Plan/PlanCard";
 import '../../sass/pages/account.page.scss';
 import {planData} from './planData';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import CurrentPlanCard from "../../components/Plan/CurrentPlanCard";
 import PlanFeaturesCard from "../../components/Plan/PlanFeaturesCard";
 import {planFeatures} from "../../components/Plan/planFeatures";
@@ -13,9 +13,14 @@ const Account = () => {
   const [selectedPlan, setSelectedPlan] = useState(0);
   const state = useSelector(({loggedUser}) => ({loggedUser}));
 
+  useEffect(() => {
+
+  }, [state.loggedUser])
+
   const handleViewDetails = (plan) => {
     setSelectedPlan(plan);
   }
+  console.log(state.loggedUser)
 
   const componentToRender = () => {
     if (curr === 0) {

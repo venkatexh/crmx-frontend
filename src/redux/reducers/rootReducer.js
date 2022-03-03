@@ -28,7 +28,7 @@ const reducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['selectedPlan', 'loggedUser']
+  whitelist: ['selectedPlan']
 }
 
 const rootReducer = (state, action) => {
