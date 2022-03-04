@@ -1,13 +1,13 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import Tag from "./Tag";
 import "../../../sass/components/home/campaigns/container.scss";
-import {saveTags} from "../../../redux/actions/account/saveTags";
+import { saveTags } from "../../../redux/actions/account/saveTags";
 
 const Container = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const state = useSelector(({tags, loggedUser}) => ({
+  const state = useSelector(({ tags, loggedUser }) => ({
     tags,
     loggedUser,
   }));
@@ -15,7 +15,7 @@ const Container = () => {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      dispatch(saveTags(state.loggedUser.id));
+      dispatch(saveTags(state.loggedUser.id, state.loggedUser.organization));
       setLoading(false);
     }, 500);
   }, []);
@@ -37,7 +37,7 @@ const Container = () => {
           ) : (
             <div>
               {state.tags.map(
-                ({_id, name, contacts, createdAt, updatedAt}) => {
+                ({ _id, name, contacts, createdAt, updatedAt }) => {
                   return (
                     <Tag
                       key={_id}

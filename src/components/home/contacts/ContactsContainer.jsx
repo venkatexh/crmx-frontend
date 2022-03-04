@@ -1,15 +1,15 @@
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {saveContacts} from "../../../redux/actions/account/saveContacts";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { saveContacts } from "../../../redux/actions/account/saveContacts";
 import "../../../sass/components/home/contacts/contactsContainer.component.scss";
-import {Link} from "react-router-dom";
-import {saveTags} from "../../../redux/actions/account/saveTags";
+import { Link } from "react-router-dom";
+import { saveTags } from "../../../redux/actions/account/saveTags";
 
 const ContactsContainer = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const state = useSelector(({loggedUser, contacts}) => ({
+  const state = useSelector(({ loggedUser, contacts }) => ({
     loggedUser,
     contacts,
   }));
@@ -17,8 +17,10 @@ const ContactsContainer = () => {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      dispatch(saveContacts(state.loggedUser.id));
-      dispatch(saveTags(state.loggedUser.id))
+      dispatch(
+        saveContacts(state.loggedUser.id, state.loggedUser.organization)
+      );
+      dispatch(saveTags(state.loggedUser.id, state.loggedUser.organization));
       setLoading(false);
     }, 1000);
   }, []);
@@ -30,7 +32,7 @@ const ContactsContainer = () => {
           <img
             src={"/loaders/comp_loader.gif"}
             alt={"loader"}
-            style={{height: "60px"}}
+            style={{ height: "60px" }}
           />
         </div>
       ) : state.contacts.length === 0 ? (
@@ -48,9 +50,13 @@ const ContactsContainer = () => {
             {state.contacts
               .slice(0)
               .reverse()
-              .map(({_id, firstName, lastName, email, status, location}) => {
+              .map(({ _id, firstName, lastName, email, status, location }) => {
                 return (
-                  <Link to={`/contact/${_id}`} className={'contactLink'} key={_id}>
+                  <Link
+                    to={`/contact/${_id}`}
+                    className={"contactLink"}
+                    key={_id}
+                  >
                     <div className={"rowContainer"}>
                       <div className={"contactRow"}>
                         <div className={"colEmail"}>{email}</div>
@@ -59,7 +65,7 @@ const ContactsContainer = () => {
                         <div className={"col"}>{status}</div>
                         <div className={"col"}>{location}</div>
                       </div>
-                      <hr className={"separator"}/>
+                      <hr className={"separator"} />
                     </div>
                   </Link>
                 );

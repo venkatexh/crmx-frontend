@@ -18,7 +18,7 @@ const FirstState = ({
   }));
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(saveTags(state.loggedUser.id));
+    dispatch(saveTags(state.loggedUser.id, state.loggedUser.organization));
   }, []);
 
   const handleButtonClick = (e) => {
