@@ -1,7 +1,12 @@
-import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import Account from "./account/Account";
 import Home from "./index/Home";
 import Contact from "./contact";
@@ -12,17 +17,20 @@ import Checkout from "./checkout";
 import PaymentSuccess from "./checkout/PaymentSuccess";
 
 const Main = () => {
-  const state = useSelector(({loggedUser, confirmationData}) => ({loggedUser, confirmationData}));
+  const state = useSelector(({ loggedUser, confirmationData }) => ({
+    loggedUser,
+    confirmationData,
+  }));
 
   const nonSessionRoutes = () => {
     return (
       <Switch>
         <Route exact path={"/"}>
-          <Redirect to={"/login"}/>
+          <Redirect to={"/login"} />
         </Route>
-        <Route exact path={"/login"} component={Login}/>
-        <Route exact path={"/signup"} component={Signup}/>
-        <Redirect to={"/"}/>
+        <Route exact path={"/login"} component={Login} />
+        <Route exact path={"/signup"} component={Signup} />
+        <Redirect to={"/"} />
       </Switch>
     );
   };
@@ -31,15 +39,19 @@ const Main = () => {
     return (
       <Switch>
         <Route exact path={"/"}>
-          <Redirect to={"/home"}/>
+          <Redirect to={"/home"} />
         </Route>
-        <Route exact path={"/home"} component={Home}/>
-        <Route exact path={'/contact/:id'} component={Contact}/>
-        <Route exact path={'/campaign/:id'} component={Campaign}/>
-        <Route exact path={'/account'} component={Account}/>
-        <Route exact path={'/checkout'} component={Checkout}/>
-        <Route exact path={'/payment-success-redirect'} component={PaymentSuccess}/>
-        <Redirect to={"/"}/>
+        <Route exact path={"/home"} component={Home} />
+        <Route exact path={"/contact/:id"} component={Contact} />
+        <Route exact path={"/campaign/:id"} component={Campaign} />
+        <Route exact path={"/account"} component={Account} />
+        <Route exact path={"/checkout"} component={Checkout} />
+        <Route
+          exact
+          path={"/payment-success-redirect"}
+          component={PaymentSuccess}
+        />
+        <Redirect to={"/"} />
       </Switch>
     );
   };
@@ -53,12 +65,13 @@ const Main = () => {
   };
 
   return (
-    <div className={'main'}>
+    <div className={"main"}>
       <Router>{routesToReturn()}</Router>
-      {
-        state.confirmationData ?
-          <Confirmation payload={state.confirmationData}/> : <></>
-      }
+      {state.confirmationData ? (
+        <Confirmation payload={state.confirmationData} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

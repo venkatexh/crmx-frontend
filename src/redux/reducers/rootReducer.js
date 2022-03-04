@@ -1,16 +1,18 @@
-import {combineReducers} from "redux";
-import {loggedUser} from "./auth/loggedUser";
-import {accountWindow} from "./account/accountWindow";
-import {contacts} from "./account/contacts";
-import {modalState} from "./utility/modalState";
-import {campaigns} from "./account/campaigns";
-import {tags} from "./account/tags";
-import {selectedContact} from "./contact/selectedContact";
-import {confirmationData} from "./utility/confirmationData";
-import {selectedPlan} from "./plan/selectedPlan";
-import {stripeSecret} from "./plan/stripeSecret";
-import storage from 'redux-persist/lib/storage'
-import {persistReducer} from 'redux-persist'
+import { combineReducers } from "redux";
+import { loggedUser } from "./auth/loggedUser";
+import { accountWindow } from "./account/accountWindow";
+import { contacts } from "./account/contacts";
+import { modalState } from "./utility/modalState";
+import { campaigns } from "./account/campaigns";
+import { tags } from "./account/tags";
+import { selectedContact } from "./contact/selectedContact";
+import { confirmationData } from "./utility/confirmationData";
+import { selectedPlan } from "./plan/selectedPlan";
+import { stripeSecret } from "./plan/stripeSecret";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+import { notifications } from "./notifications/notifications";
+import { newNotification } from "./notifications/newNotification";
 
 const reducer = combineReducers({
   loggedUser,
@@ -22,14 +24,16 @@ const reducer = combineReducers({
   modalState,
   confirmationData,
   selectedPlan,
-  stripeSecret
+  stripeSecret,
+  notifications,
+  newNotification,
 });
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-  whitelist: ['selectedPlan']
-}
+  whitelist: ["selectedPlan", "notifications", "newNotification"],
+};
 
 const rootReducer = (state, action) => {
   if (action.type === "USER_LOGOUT") {

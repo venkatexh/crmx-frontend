@@ -1,13 +1,18 @@
 import "../../sass/components/navigation.component.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileTab from "./ProfileTab";
 import { useState } from "react";
 import NotificationTab from "./NotificationTab";
+import { setNewNotification } from "../../redux/actions/notifications/setNewNotification";
 
 const RightNav = () => {
-  const state = useSelector(({ loggedUser }) => ({ loggedUser }));
+  const state = useSelector(({ loggedUser, newNotification }) => ({
+    loggedUser,
+    newNotification,
+  }));
   const [tabOpen, setTabOpen] = useState(false);
   const [tab, setTab] = useState("");
+  const dispatch = useDispatch();
 
   const tabToRender = () => {
     if (tab === "profile") {
@@ -34,9 +39,13 @@ const RightNav = () => {
         onClick={() => {
           setTab("notification");
           setTabOpen(!tabOpen);
+          dispatch(setNewNotification(false));
         }}
       >
         <img src={"/icons/bell.png"} alt={"icon"} style={{ height: "32px" }} />
+        {state.newNotification ? (
+          <div className={"notificationSymbol"}>&#8226;</div>
+        ) : null}
       </div>
       <div className={"iconContainer"}>
         <img
