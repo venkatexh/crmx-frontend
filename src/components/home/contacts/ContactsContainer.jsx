@@ -18,9 +18,11 @@ const ContactsContainer = () => {
     setLoading(true);
     setTimeout(() => {
       dispatch(
-        saveContacts(state.loggedUser.id, state.loggedUser.organization)
+        saveContacts(state.loggedUser.id, state.loggedUser.userOrganization._id)
       );
-      dispatch(saveTags(state.loggedUser.id, state.loggedUser.organization));
+      dispatch(
+        saveTags(state.loggedUser.id, state.loggedUser.userOrganization._id)
+      );
       setLoading(false);
     }, 1000);
   }, []);

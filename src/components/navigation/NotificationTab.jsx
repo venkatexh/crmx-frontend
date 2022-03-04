@@ -10,22 +10,25 @@ TypeMap.set("campaign_updated", "was updated");
 TypeMap.set("campaign_sent", "was sent");
 TypeMap.set("campaign_scheduled", "was scheduled");
 
-const NotificationTile = ({ type, name, date }) => {
+const NotificationTile = ({ type, name }) => {
   return (
     <div className={"notificationTile"}>
       <div className={"text"}>
         Campaign {name} {TypeMap.get(type)}.
       </div>
-      <div className={"date"}>{date}</div>
+      <div className={"date"}>{}</div>
     </div>
   );
 };
 
 const NotificationTab = () => {
-  const state = useSelector(({ notifications }) => ({ notifications }));
+  const state = useSelector(({ loggedUser, notifications }) => ({
+    loggedUser,
+    notifications,
+  }));
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchNotifications("6220e6b097cbfbcb14e14d44"));
+    dispatch(fetchNotifications(state.loggedUser.userOrganization._id));
     console.log("notif");
   }, []);
   return (
@@ -36,7 +39,6 @@ const NotificationTab = () => {
             <NotificationTile
               name={notification.name}
               type={notification.type}
-              date={notification.createdAt}
               key={notification._id}
             />
           );

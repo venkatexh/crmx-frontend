@@ -17,21 +17,31 @@ import { setNewNotification } from "../../redux/actions/notifications/setNewNoti
 const Home = () => {
   const dispatch = useDispatch();
   const state = useSelector(
-    ({ loggedUser, accountWindow, modalState, notifications }) => ({
+    ({
       loggedUser,
       accountWindow,
       modalState,
       notifications,
+      organization,
+    }) => ({
+      loggedUser,
+      accountWindow,
+      modalState,
+      notifications,
+      organization,
     })
   );
-  useEffect(() => {
+  useEffect(async () => {
     if (!state.loggedUser) {
       dispatch(login(JSON.parse(sessionStorage.getItem("loggedUser"))));
     }
     const pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
       cluster: process.env.REACT_APP_PUSHER_CLUSTER,
     });
-    const channel = pusher.subscribe("notifications");
+    console.log(state.loggedUser);
+    const channel = pusher.subscribe(
+      state.loggedUser.userOrganization.orgInternalId
+    );
     channel.bind("notifications", (data) => {
       dispatch(updateNotifications([...state.notifications, data]));
       dispatch(setNewNotification(true));
@@ -54,7 +64,6 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {}, [state.accountWindow]);
   return (
     <>
       <div className={"mainContainer"}>

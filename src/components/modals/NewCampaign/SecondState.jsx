@@ -1,32 +1,32 @@
-import {useState} from "react";
+import { useState } from "react";
 import "../../../sass/components/modals/newCampaign.scss";
 import Axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
-import {updateCampaigns} from "../../../redux/actions/account/updateCampaigns";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCampaigns } from "../../../redux/actions/account/updateCampaigns";
 import hostHeader from "../../../config/host";
 
 const SecondState = ({
-                       name,
-                       tags,
-                       subject,
-                       from,
-                       text,
-                       html,
-                       handleTextChange,
-                       handleHtmlChange,
-                       handleStateChange,
-                       handleSubjectChange,
-                       handleFromChange,
-                       handlePrevState,
-                       handleCurrentCampaign
-                     }) => {
+  name,
+  tags,
+  subject,
+  from,
+  text,
+  html,
+  handleTextChange,
+  handleHtmlChange,
+  handleStateChange,
+  handleSubjectChange,
+  handleFromChange,
+  handlePrevState,
+  handleCurrentCampaign,
+}) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailType, setEmailType] = useState(0);
 
   const dispatch = useDispatch();
 
-  const state = useSelector(({loggedUser, campaigns}) => ({
+  const state = useSelector(({ loggedUser, campaigns }) => ({
     loggedUser,
     campaigns,
   }));
@@ -50,7 +50,7 @@ const SecondState = ({
         html,
       };
       Axios.post(
-        `${hostHeader.url}/api/user/${state.loggedUser.id}/campaigns`,
+        `${hostHeader.url}/api/user/campaigns?user_id=${state.loggedUser.id}&org_id=${state.loggedUser.userOrganization._id}`,
         campaign
       )
         .then((res) => {

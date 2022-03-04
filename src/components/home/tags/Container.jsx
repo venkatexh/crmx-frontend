@@ -15,7 +15,9 @@ const Container = () => {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      dispatch(saveTags(state.loggedUser.id, state.loggedUser.organization));
+      dispatch(
+        saveTags(state.loggedUser.id, state.loggedUser.userOrganization._id)
+      );
       setLoading(false);
     }, 500);
   }, []);
