@@ -4,6 +4,7 @@ import ProfileTab from "./ProfileTab";
 import { useState } from "react";
 import NotificationTab from "./NotificationTab";
 import { setNewNotification } from "../../redux/actions/notifications/setNewNotification";
+import { Link } from "react-router-dom";
 
 const RightNav = () => {
   const state = useSelector(({ loggedUser, newNotification }) => ({
@@ -47,13 +48,13 @@ const RightNav = () => {
           <div className={"notificationSymbol"}>&#8226;</div>
         ) : null}
       </div>
-      <div className={"iconContainer"}>
+      <Link to={"/organization-settings"} className={"iconContainer"}>
         <img
           src={"/icons/setting.png"}
           alt={"icon"}
           style={{ height: "32px" }}
         />
-      </div>
+      </Link>
       <div className={"iconContainer"}>
         <img
           src={"/icons/magic-wand.png"}

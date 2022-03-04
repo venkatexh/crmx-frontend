@@ -18,6 +18,8 @@
     color: #414242;
     font-size: 21px;
     padding: 0.8rem 0;
+    cursor: pointer;
+    text-decoration: none;
 
     .text {
       margin-left: 1rem;
@@ -27,6 +29,7 @@
   .navHighlighted {
     background: #b55dfc;
     color: white;
+    cursor: default;
   }
 }
 

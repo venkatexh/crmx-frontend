@@ -15,6 +15,12 @@ import "../sass/components/home/main.component.scss";
 import Confirmation from "../components/modals/Confirmation";
 import Checkout from "./checkout";
 import PaymentSuccess from "./checkout/PaymentSuccess";
+import LeftNav from "../components/navigation/LeftNav";
+import RightNav from "../components/navigation/RightNav";
+import Dashboard from "./home/Dashboard";
+import Contacts from "./home/Contacts";
+import Campaigns from "./home/Campaigns";
+import Tags from "./home/Tags";
 
 const Main = () => {
   const state = useSelector(({ loggedUser, confirmationData }) => ({
@@ -37,22 +43,37 @@ const Main = () => {
 
   const sessionRoutes = () => {
     return (
-      <Switch>
-        <Route exact path={"/"}>
-          <Redirect to={"/home"} />
-        </Route>
-        <Route exact path={"/home"} component={Home} />
-        <Route exact path={"/contact/:id"} component={Contact} />
-        <Route exact path={"/campaign/:id"} component={Campaign} />
-        <Route exact path={"/account"} component={Account} />
-        <Route exact path={"/checkout"} component={Checkout} />
-        <Route
-          exact
-          path={"/payment-success-redirect"}
-          component={PaymentSuccess}
-        />
-        <Redirect to={"/"} />
-      </Switch>
+      <div className={"mainContainer"}>
+        <div className={"nav"}>{<LeftNav />}</div>
+        <div className={"body"}>
+          <Switch>
+            <Route exact path={"/"}>
+              <Redirect to={"/dashboard"} />
+            </Route>
+            <Route exact path={"/dashboard"} component={Dashboard} />
+            <Route exact path={"/contacts"} component={Contacts} />
+            <Route exact path={"/campaigns"} component={Campaigns} />
+            <Route exact path={"/tags"} component={Tags} />
+            <Route exact path={"/home"} component={Home} />
+            <Route exact path={"/contact/:id"} component={Contact} />
+            <Route exact path={"/campaign/:id"} component={Campaign} />
+            {/*<Route*/}
+            {/*  exact*/}
+            {/*  path={"/organization-settings"}*/}
+            {/*  component={OrganizationSettings}*/}
+            {/*/>*/}
+            <Route exact path={"/account"} component={Account} />
+            <Route exact path={"/checkout"} component={Checkout} />
+            <Route
+              exact
+              path={"/payment-success-redirect"}
+              component={PaymentSuccess}
+            />
+            <Redirect to={"/"} />
+          </Switch>
+        </div>
+        <div className={"rightCol"}>{<RightNav />}</div>
+      </div>
     );
   };
 
