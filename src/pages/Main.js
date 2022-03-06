@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
-import { useSelector } from "react-redux";
-import Account from "./account/Account";
+import { useDispatch, useSelector } from "react-redux";
+import Plan from "./account/Plan";
 import Home from "./index/Home";
 import Contact from "./contact";
 import Campaign from "./Campaign";
@@ -24,6 +24,10 @@ import Tags from "./home/Tags";
 import OrganizationSettings from "./organization/OrganizationSettings";
 import OrganizationInvitation from "./organization/OrganizationInvitation";
 import Modal from "../components/modals/Modal";
+import Profile from "../components/profile/Profile";
+import { useEffect } from "react";
+import Pusher from "pusher-js";
+import { setNewNotification } from "../redux/actions/notifications/setNewNotification";
 
 const Main = () => {
   const state = useSelector(({ loggedUser, confirmationData, modalState }) => ({
@@ -31,6 +35,20 @@ const Main = () => {
     confirmationData,
     modalState,
   }));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("main");
+    const pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
+      cluster: process.env.REACT_APP_PUSHER_CLUSTER,
+    });
+    const channel = pusher.subscribe(
+      state.loggedUser.organization.orgInternalId
+    );
+    channel.bind("notifications", (data) => {
+      dispatch(setNewNotification(true));
+    });
+  });
 
   const nonSessionRoutes = () => {
     return (
@@ -71,7 +89,8 @@ const Main = () => {
               path={"/organization-settings"}
               component={OrganizationSettings}
             />
-            <Route exact path={"/account"} component={Account} />
+            <Route exact path={"/plans"} component={Plan} />
+            <Route exact path={"/profile"} component={Profile} />
             <Route exact path={"/checkout"} component={Checkout} />
             <Route
               exact

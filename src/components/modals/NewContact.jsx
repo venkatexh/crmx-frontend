@@ -48,7 +48,7 @@ const NewContact = () => {
         tags,
       };
       Axios.post(
-        `${hostHeader.url}/api/user/contacts?org_id=${state.loggedUser.organizationId}&user_id=${state.loggedUser.id}`,
+        `${hostHeader.url}/api/user/contacts?org_id=${state.loggedUser.organization._id}&user_id=${state.loggedUser.id}`,
         contact
       )
         .then((res) => {

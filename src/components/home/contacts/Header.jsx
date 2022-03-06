@@ -1,11 +1,11 @@
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../../sass/components/home/dashboard/header.component.scss";
-import {Link} from "react-router-dom";
-import {toggleModal} from "../../../redux/actions/utility/toggleModal";
+import { Link } from "react-router-dom";
+import { toggleModal } from "../../../redux/actions/utility/toggleModal";
 
 const Header = () => {
-  const state = useSelector(({loggedUser}) => ({loggedUser}));
-  console.log(state.loggedUser)
+  const state = useSelector(({ loggedUser }) => ({ loggedUser }));
+  console.log(state.loggedUser);
   const dispatch = useDispatch();
   const modalType = "new-contact";
   const handleClick = () => {
@@ -17,7 +17,7 @@ const Header = () => {
         <div className={"greeting"}>Contacts</div>
         <div className={"contactCount"}>
           You have <span className={"highlight"}>1414</span> contacts in{" "}
-          {state.loggedUser.company}
+          {state.loggedUser.organization.name}
         </div>
       </div>
       <div>

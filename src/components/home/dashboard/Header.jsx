@@ -1,10 +1,10 @@
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../../sass/components/home/dashboard/header.component.scss";
-import {Link} from "react-router-dom";
-import {changeWindow} from "../../../redux/actions/account/changeWindow";
+import { Link } from "react-router-dom";
+import { changeWindow } from "../../../redux/actions/account/changeWindow";
 
 const Header = () => {
-  const state = useSelector(({loggedUser}) => ({loggedUser}));
+  const state = useSelector(({ loggedUser }) => ({ loggedUser }));
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(changeWindow("contacts"));
@@ -15,7 +15,7 @@ const Header = () => {
         <div className={"greeting"}>Hi {state.loggedUser.firstName}!</div>
         <div className={"contactCount"}>
           You have <span className={"highlight"}>1414</span> contacts in{" "}
-          {state.loggedUser.company}
+          {state.loggedUser.organization.name}
         </div>
       </div>
       <div>

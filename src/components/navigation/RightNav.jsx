@@ -1,6 +1,6 @@
 import "../../sass/components/navigation.component.scss";
 import { useDispatch, useSelector } from "react-redux";
-import ProfileTab from "./ProfileTab";
+import UserTab from "./UserTab";
 import { useState } from "react";
 import NotificationTab from "./NotificationTab";
 import { setNewNotification } from "../../redux/actions/notifications/setNewNotification";
@@ -17,7 +17,7 @@ const RightNav = () => {
 
   const tabToRender = () => {
     if (tab === "profile") {
-      return <ProfileTab />;
+      return <UserTab />;
     } else if (tab === "notification") {
       return <NotificationTab />;
     }
