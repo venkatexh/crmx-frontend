@@ -21,11 +21,15 @@ import Dashboard from "./home/Dashboard";
 import Contacts from "./home/Contacts";
 import Campaigns from "./home/Campaigns";
 import Tags from "./home/Tags";
+import OrganizationSettings from "./organization/OrganizationSettings";
+import OrganizationInvitation from "./organization/OrganizationInvitation";
+import Modal from "../components/modals/Modal";
 
 const Main = () => {
-  const state = useSelector(({ loggedUser, confirmationData }) => ({
+  const state = useSelector(({ loggedUser, confirmationData, modalState }) => ({
     loggedUser,
     confirmationData,
+    modalState,
   }));
 
   const nonSessionRoutes = () => {
@@ -36,6 +40,11 @@ const Main = () => {
         </Route>
         <Route exact path={"/login"} component={Login} />
         <Route exact path={"/signup"} component={Signup} />
+        <Route
+          exact
+          path={"/user/invite/:id"}
+          component={OrganizationInvitation}
+        />
         <Redirect to={"/"} />
       </Switch>
     );
@@ -57,11 +66,11 @@ const Main = () => {
             <Route exact path={"/home"} component={Home} />
             <Route exact path={"/contact/:id"} component={Contact} />
             <Route exact path={"/campaign/:id"} component={Campaign} />
-            {/*<Route*/}
-            {/*  exact*/}
-            {/*  path={"/organization-settings"}*/}
-            {/*  component={OrganizationSettings}*/}
-            {/*/>*/}
+            <Route
+              exact
+              path={"/organization-settings"}
+              component={OrganizationSettings}
+            />
             <Route exact path={"/account"} component={Account} />
             <Route exact path={"/checkout"} component={Checkout} />
             <Route
@@ -73,6 +82,7 @@ const Main = () => {
           </Switch>
         </div>
         <div className={"rightCol"}>{<RightNav />}</div>
+        {state.modalState ? <Modal /> : <></>}
       </div>
     );
   };

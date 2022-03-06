@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { notifications } from "./notifications/notifications";
 import { newNotification } from "./notifications/newNotification";
+import { organizationUsers } from "./organization/organizationUsers";
 
 const reducer = combineReducers({
   loggedUser,
@@ -27,6 +28,7 @@ const reducer = combineReducers({
   stripeSecret,
   notifications,
   newNotification,
+  organizationUsers,
 });
 
 const persistConfig = {

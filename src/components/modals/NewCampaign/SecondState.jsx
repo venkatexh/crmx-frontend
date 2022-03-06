@@ -50,7 +50,7 @@ const SecondState = ({
         html,
       };
       Axios.post(
-        `${hostHeader.url}/api/user/campaigns?user_id=${state.loggedUser.id}&org_id=${state.loggedUser.userOrganization._id}`,
+        `${hostHeader.url}/api/user/campaigns?user_id=${state.loggedUser.id}&org_id=${state.loggedUser.organization._id}`,
         campaign
       )
         .then((res) => {

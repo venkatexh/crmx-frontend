@@ -16,10 +16,7 @@ const Container = () => {
     setLoading(true);
     setTimeout(() => {
       dispatch(
-        saveCampaigns(
-          state.loggedUser.id,
-          state.loggedUser.userOrganization._id
-        )
+        saveCampaigns(state.loggedUser.id, state.loggedUser.organization._id)
       );
       setLoading(false);
     }, 500);

@@ -28,7 +28,7 @@ const NotificationTab = () => {
   }));
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchNotifications(state.loggedUser.userOrganization._id));
+    dispatch(fetchNotifications(state.loggedUser.organizationId));
     console.log("notif");
   }, []);
   return (

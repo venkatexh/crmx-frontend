@@ -16,7 +16,7 @@ const Container = () => {
     setLoading(true);
     setTimeout(() => {
       dispatch(
-        saveTags(state.loggedUser.id, state.loggedUser.userOrganization._id)
+        saveTags(state.loggedUser.id, state.loggedUser.organization._id)
       );
       setLoading(false);
     }, 500);

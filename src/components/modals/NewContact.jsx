@@ -1,8 +1,8 @@
-import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
-import {toggleModal} from "../../redux/actions/utility/toggleModal";
-import {updateContacts} from "../../redux/actions/account/updateContacts";
+import { toggleModal } from "../../redux/actions/utility/toggleModal";
+import { updateContacts } from "../../redux/actions/account/updateContacts";
 import hostHeader from "../../config/host";
 
 const NewContact = () => {
@@ -17,19 +17,19 @@ const NewContact = () => {
 
   const dispatch = useDispatch();
 
-  const state = useSelector(({loggedUser, contacts, tags}) => ({
+  const state = useSelector(({ loggedUser, contacts, tags }) => ({
     loggedUser,
     contacts,
-    tags
+    tags,
   }));
 
   const handleTagAddition = (tag) => {
     if (tags.filter((t) => t.id === tag._id).length > 0) {
       updateTags(tags.filter((found) => found.id !== tag._id));
     } else {
-      updateTags((prev) => [...prev, {id: tag._id, name: tag.name}]);
+      updateTags((prev) => [...prev, { id: tag._id, name: tag.name }]);
     }
-  }
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -45,10 +45,10 @@ const NewContact = () => {
         lastName,
         location,
         status,
-        tags
+        tags,
       };
       Axios.post(
-        `${hostHeader.url}/api/user/${state.loggedUser.id}/contacts`,
+        `${hostHeader.url}/api/user/contacts?org_id=${state.loggedUser.organizationId}&user_id=${state.loggedUser.id}`,
         contact
       )
         .then((res) => {
@@ -163,7 +163,7 @@ const NewContact = () => {
               <img
                 src={"loaders/btn_loader.gif"}
                 alt={"loader"}
-                style={{height: "30px"}}
+                style={{ height: "30px" }}
               />
             ) : (
               "Create"

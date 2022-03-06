@@ -1,7 +1,6 @@
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import "../../../sass/components/home/dashboard/header.component.scss";
-import {Link} from "react-router-dom";
-import {toggleModal} from "../../../redux/actions/utility/toggleModal";
+import { toggleModal } from "../../../redux/actions/utility/toggleModal";
 
 const Header = () => {
   // const state = useSelector(({ loggedUser }) => ({ loggedUser }));
@@ -19,11 +18,11 @@ const Header = () => {
         </div>
       </div>
       <div>
-        <Link to={"contacts"}>
-          <button className={"viewContactsBtn"} onClick={() => handleClick()}>
-            New Campaign
-          </button>
-        </Link>
+        {/*<Link to={"contacts"}>*/}
+        <button className={"viewContactsBtn"} onClick={() => handleClick()}>
+          New Campaign
+        </button>
+        {/*</Link>*/}
       </div>
     </div>
   );
