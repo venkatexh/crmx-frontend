@@ -1,0 +1,131 @@
+.planCard {
+  width: 20%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 50px;
+  margin: 0 1rem;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  box-shadow: 4px 4px 36px 4px #e3e3e3;
+  border: 2px solid #ffffff;
+
+
+  .planName {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .planPrice {
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .planRate {
+    margin-bottom: 1rem;
+  }
+
+  .planFeatures {
+    opacity: 0.6;
+  }
+
+  .viewDetails {
+    color: #b55dfc;
+    cursor: pointer;
+  }
+
+  .upgradeButton {
+    width: 120px;
+    height: 32px;
+    border: none;
+    background: #b55dfc;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .currentButton {
+    width: 120px;
+    height: 32px;
+    border: 1px solid #b55dfc;
+  }
+}
+
+.selectedPlanCard {
+  border: 2px solid #b55dfc;
+}
+
+.currentPlan {
+  width: 80%;
+  padding: 2rem 3rem;
+  margin: 0 auto 5rem auto;
+  box-shadow: 6px 6px 36px 4px #e3e3e3;
+
+  .currentLeft {
+    width: 50%;
+
+    .textTop {
+      opacity: 0.5;
+    }
+
+    .textMid {
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .textBottom {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.featuresCard {
+  width: 80%;
+  padding: 2rem 3em;
+  margin: 4rem auto;
+  box-shadow: 6px 6px 36px 4px #e3e3e3;
+
+  .planName {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 3rem;
+  }
+
+  .featuresContainer {
+    display: flex;
+
+    .featuresLeft {
+      width: 50%;
+
+      .counts {
+        opacity: 0.6;
+        font-size: 21px;
+      }
+    }
+
+    .featuresRight {
+      width: 50%;
+
+      .feature {
+        font-size: 21px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .featureText {
+          opacity: 0.6;
+        }
+
+        .icon {
+          height: 20px;
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}

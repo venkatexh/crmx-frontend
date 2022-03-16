@@ -1,26 +1,41 @@
-.mainContainer {
-  display: flex;
-  position: relative;
+.planPage {
+  width: 100%;
+  margin: 0 auto;
 
-  .nav {
-    width: 15vw;
-    height: 100vh;
-    background: #f2f2f2;
-    position: fixed;
+  .accountNav {
+    width: 100%;
+    display: flex;
+    background: #e8eded;
+    margin: 2rem auto;
+
+    .navItem {
+      font-size: 21px;
+      padding: 0.5rem 2rem;
+
+      .itemText {
+        padding: 1rem;
+      }
+    }
+
+    .selectedItem {
+      background: #b55dfc;
+      color: white;
+    }
+
+    .unselectedItem:hover {
+      background: #e3e3e3;
+      cursor: pointer;
+    }
   }
 
-  .body {
-    margin-left: 15vw;
-    margin-right: 5vw;
-    width: 80vw;
-    padding: 2rem 2rem;
+  .parentContainer {
+    width: 100%;
+    margin: 3rem auto;
   }
 
-  .rightCol {
-    width: 5vw;
-    height: 100vh;
-    border-left: 2px #f2f2f2 solid;
-    position: fixed;
-    right:0;
+  .plansContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

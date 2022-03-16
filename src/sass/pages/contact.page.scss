@@ -1,0 +1,24 @@
+.contactPage {
+  display: flex;
+  justify-content: space-between;
+
+  .contactBodyLoader {
+    height: 100vh;
+    width: 95vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .leftCol {
+    width: 95vw;
+  }
+
+  .rightCol {
+    width: 5vw;
+    height: 100vh;
+    border-left: 2px #f2f2f2 solid;
+    position: fixed;
+    right: 0;
+  }
+}

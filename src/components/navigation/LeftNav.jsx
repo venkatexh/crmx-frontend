@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import "../../sass/components/navigation.component.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { changeWindow } from "../../redux/actions/account/changeWindow";
+import { Link } from "react-router-dom";
 
 const LeftNav = () => {
   const dispatch = useDispatch();
@@ -10,25 +10,21 @@ const LeftNav = () => {
     dispatch(changeWindow(window));
   };
 
-  const windows = ["dashboard", "contacts", "campaigns", "tags", "surveys"];
+  const windows = ["dashboard", "contacts", "campaigns", "tags"];
 
   const NavLink = ({ window }) => {
     return (
-      <>
-        <Link to={`/${window}`} className={"linkTag"}>
-          <div
-            className={`${
-              state.accountWindow === window ? "navHighlighted" : ""
-            } navLink`}
-            onClick={() => handleWindowChange(window)}
-          >
-            <span className={"text"}>
-              {window.charAt(0).toUpperCase() + window.slice(1)}
-            </span>
-          </div>
-        </Link>
-        {/*<hr className={"line"} />*/}
-      </>
+      <Link
+        to={`/${window}`}
+        className={`${
+          state.accountWindow === window ? "navHighlighted" : ""
+        } navLink`}
+        onClick={() => handleWindowChange(window)}
+      >
+        <span className={"text"}>
+          {window.charAt(0).toUpperCase() + window.slice(1)}
+        </span>
+      </Link>
     );
   };
   return (

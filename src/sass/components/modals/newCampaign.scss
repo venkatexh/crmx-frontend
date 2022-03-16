@@ -65,7 +65,7 @@
       border: 1px solid #cccaca
     }
 
-    .emailText:focus  {
+    .emailText:focus {
       outline: none;
     }
 
@@ -138,6 +138,7 @@
         }
       }
     }
+
     .btnContainer {
       position: relative;
       padding: 40px 0;
@@ -166,6 +167,7 @@
       }
     }
   }
+
   .goBack {
     position: absolute;
     bottom: 10px;
@@ -190,6 +192,7 @@
       font-weight: 500;
     }
   }
+
   .buttonsGroup {
     margin: 60px 0;
     display: flex;

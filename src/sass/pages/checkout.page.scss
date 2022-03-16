@@ -1,0 +1,74 @@
+.checkoutPage {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  height: 100vh;
+
+  .checkoutSummary {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #b55dfc;
+    border-radius: 10px;
+    min-width: 300px;
+
+    .planRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1rem 0;
+
+      .leftText {
+        opacity: 0.5;
+      }
+
+      .rightText {
+        font-size: 26px;
+        font-weight: 400;
+      }
+    }
+
+    .summaryTop {
+      background: #e3e3e3;
+      padding: 1rem 2rem;
+      border-radius: 12px 12px 0 0;
+      font-size: 24px;
+    }
+
+    .selectedPlan {
+      padding: 2rem 2rem;
+    }
+  }
+
+  .paymentLoader {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loaderImg {
+      width: 64px;
+    }
+  }
+
+  .paymentContainer {
+    width: 50%;
+    margin: auto 0 auto auto;
+
+    .payButton {
+      border: 1px solid #000000;
+      height: 32px;
+      width: 120px;
+      background: #ffffff;
+      margin: 1rem auto;
+    }
+
+    .payButton:hover {
+      background: #000000;
+      color: #ffffff;
+      cursor: pointer;
+    }
+  }
+}
