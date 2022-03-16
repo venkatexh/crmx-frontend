@@ -13,13 +13,23 @@ const NewContact = () => {
   const [status, setStatus] = useState("Subscribed");
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [tags, updateTags] = useState([]);
 
   const dispatch = useDispatch();
 
-  const state = useSelector(({ loggedUser, contacts }) => ({
+  const state = useSelector(({ loggedUser, contacts, tags }) => ({
     loggedUser,
     contacts,
+    tags,
   }));
+
+  const handleTagAddition = (tag) => {
+    if (tags.filter((t) => t.id === tag._id).length > 0) {
+      updateTags(tags.filter((found) => found.id !== tag._id));
+    } else {
+      updateTags((prev) => [...prev, { id: tag._id, name: tag.name }]);
+    }
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -35,9 +45,10 @@ const NewContact = () => {
         lastName,
         location,
         status,
+        tags,
       };
       Axios.post(
-        `${hostHeader.url}/api/user/${state.loggedUser.id}/contacts`,
+        `${hostHeader.url}/api/user/contacts?org_id=${state.loggedUser.organization._id}&user_id=${state.loggedUser.id}`,
         contact
       )
         .then((res) => {
@@ -107,6 +118,39 @@ const NewContact = () => {
             <option value="subscribed">Subscribed</option>
             <option value="unsubscribed">Unsubscribed</option>
           </select>
+        </div>
+        <div className={"tagsInput"}>
+          <label>Add tags to your campaign</label>
+          <div className={"tagsList"}>
+            <div className={"userTagsList"}>
+              <div className={"listWrapper"}>
+                {state.tags.map((tag) => {
+                  return (
+                    <div
+                      className={`${
+                        tags.filter((t) => t.id === tag._id).length > 0
+                          ? "userTagSelected"
+                          : "userTag"
+                      }`}
+                      key={tag._id}
+                      onClick={() => handleTagAddition(tag)}
+                    >
+                      {tag.name}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className={"selectedTagsList"}>
+              {tags.map((tag) => {
+                return (
+                  <div key={tag.id} className={"selectedTag"}>
+                    {tag.name}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
         <div className={"utility"}>
           <div className={"errorMessage"}>{errorMessage}</div>

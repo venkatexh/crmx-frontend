@@ -1,52 +1,35 @@
-import {useEffect, useState} from "react";
+import { useState } from "react";
 import "../../../sass/components/modals/newCampaign.scss";
 import Axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
-import {updateCampaigns} from "../../../redux/actions/account/updateCampaigns";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCampaigns } from "../../../redux/actions/account/updateCampaigns";
 import hostHeader from "../../../config/host";
 
 const SecondState = ({
-                       name,
-                       tags,
-                       subject,
-                       from,
-                       text,
-                       html,
-                       handleTextChange,
-                       handleHtmlChange,
-                       handleStateChange,
-                       handleSubjectChange,
-                       handleFromChange,
-                       handlePrevState,
-                       handleCurrentCampaign
-                     }) => {
+  name,
+  tags,
+  subject,
+  from,
+  text,
+  html,
+  handleTextChange,
+  handleHtmlChange,
+  handleStateChange,
+  handleSubjectChange,
+  handleFromChange,
+  handlePrevState,
+  handleCurrentCampaign,
+}) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailType, setEmailType] = useState(0);
-  const [sendTo, setSendTo] = useState([]);
 
   const dispatch = useDispatch();
 
-  const state = useSelector(({loggedUser, campaigns}) => ({
+  const state = useSelector(({ loggedUser, campaigns }) => ({
     loggedUser,
     campaigns,
   }));
-
-  useEffect(() => {
-    setLoading(true);
-    for (const tag of tags) {
-      Axios.get(`${hostHeader.url}/api/tag/${tag.id}/contacts`)
-        .then((res) => {
-          setSendTo((prevState) => [...prevState, ...res.data]);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.log(err.message);
-          setErrorMessage("Something went wrong! please try again.");
-          setLoading(false);
-        });
-    }
-  }, [tags]);
 
   const handleButtonClick = async (e) => {
     e.preventDefault();
@@ -65,10 +48,9 @@ const SecondState = ({
         from,
         text,
         html,
-        sentTo: sendTo,
       };
       Axios.post(
-        `${hostHeader.url}/api/user/${state.loggedUser.id}/campaigns`,
+        `${hostHeader.url}/api/user/campaigns?user_id=${state.loggedUser.id}&org_id=${state.loggedUser.organization._id}`,
         campaign
       )
         .then((res) => {
@@ -80,7 +62,7 @@ const SecondState = ({
         })
         .catch((err) => {
           console.log(err.message);
-          setErrorMessage("Something went wrong! please try again.");
+          setErrorMessage("Something went wrong! Please try again.");
         });
     }
   };

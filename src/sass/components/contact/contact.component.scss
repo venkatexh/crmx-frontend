@@ -1,0 +1,158 @@
+.contactHeader {
+  margin: 3rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      font-size: 48px;
+    }
+
+    .email {
+      font-weight: 400;
+      font-size: 24px;
+    }
+  }
+
+  .actionsButton {
+    background: #b8bab8;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 5px 20px;
+    border: 1px solid #454745;
+    cursor: pointer;
+  }
+
+  .actionDropdown {
+    position: absolute;
+    height: 60px;
+    width: 140px;
+    border: 1px solid #454745;
+
+    .actionOption {
+      height: 30px;
+      width: 140px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .optionText {
+        padding: 0 20px;
+      }
+    }
+
+    .actionOption:hover {
+      background: #b55dfc;
+      color: #ffffff;
+    }
+  }
+
+  .subscribed {
+    background: #27d417;
+  }
+
+  .unsubscribed {
+    background: #db1a04;
+  }
+
+  .contactStatus {
+    color: #ffffff;
+    padding: 5px 15px;
+    font-weight: 500;
+    border-radius: 10px;
+  }
+
+  .middle {
+
+  }
+
+  .right {
+
+  }
+}
+
+.contactBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 2rem 5rem;
+
+  .heading {
+    font-size: 32px;
+    margin-bottom: 2rem;
+  }
+
+  .left {
+    width: 75%;
+
+    .activityContainer {
+      width: 90%;
+
+      .activityCard {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 0;
+
+        .activityCardLeft {
+          display: flex;
+          align-items: center;
+          width: 40%;
+          flex-wrap: wrap;
+
+          .activityIcon {
+            height: 24px;
+            margin-right: 10px;
+          }
+        }
+
+        .activityCardMiddle {
+          width: 30%;
+          display: flex;
+          justify-content: center;
+
+          .longArrow {
+            width: 72px;
+            height: 48px;
+          }
+        }
+
+        .activityCardRight {
+          width: 30%;
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+
+  .right {
+    width: 25%;
+
+    .tagsList {
+      display: flex;
+      flex-wrap: wrap;
+
+      .contactTag {
+        background: #e8eded;
+        padding: 5px 20px;
+        margin: 10px 20px 0 0;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+
+        .tagName {
+          margin-right: 10px;
+        }
+
+        .cross {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

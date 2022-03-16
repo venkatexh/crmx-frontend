@@ -5,15 +5,37 @@ import { contacts } from "./account/contacts";
 import { modalState } from "./utility/modalState";
 import { campaigns } from "./account/campaigns";
 import { tags } from "./account/tags";
+import { selectedContact } from "./contact/selectedContact";
+import { confirmationData } from "./utility/confirmationData";
+import { selectedPlan } from "./plan/selectedPlan";
+import { stripeSecret } from "./plan/stripeSecret";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+import { notifications } from "./notifications/notifications";
+import { newNotification } from "./notifications/newNotification";
+import { organizationUsers } from "./organization/organizationUsers";
 
 const reducer = combineReducers({
   loggedUser,
   accountWindow,
   contacts,
+  selectedContact,
   campaigns,
   tags,
   modalState,
+  confirmationData,
+  selectedPlan,
+  stripeSecret,
+  notifications,
+  newNotification,
+  organizationUsers,
 });
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["selectedPlan", "notifications", "newNotification"],
+};
 
 const rootReducer = (state, action) => {
   if (action.type === "USER_LOGOUT") {
@@ -22,4 +44,4 @@ const rootReducer = (state, action) => {
   return reducer(state, action);
 };
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);

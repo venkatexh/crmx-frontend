@@ -6,6 +6,7 @@
 
   .logo {
     padding: 1rem 0 2rem 1rem;
+    color: #ffffff;
   }
 
   .linkTag {
@@ -15,9 +16,11 @@
 
   .navLink {
     width: 100%;
-    color: #414242;
+    color: #ffffff;
     font-size: 21px;
     padding: 0.8rem 0;
+    cursor: pointer;
+    text-decoration: none;
 
     .text {
       margin-left: 1rem;
@@ -27,6 +30,7 @@
   .navHighlighted {
     background: #b55dfc;
     color: white;
+    cursor: default;
   }
 }
 
@@ -64,13 +68,24 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+    position: relative;
+
+    .notificationSymbol {
+      position: absolute;
+      height: 10px;
+      left: 30%;
+      bottom: 30%;
+      color: red;
+      font-size: 30px;
+    }
   }
+
   .iconContainer:hover {
     background: #f2f2f2;
   }
 }
 
-.profileTab {
+.userTab {
   position: absolute;
   height: 42vh;
   width: 18vw;
@@ -104,11 +119,46 @@
     .menu-item {
       padding: 12px 20px;
       font-size: 18px;
+      text-decoration: none;
       cursor: pointer;
+      color: #000000;
     }
 
     .menu-item:hover {
       background: #f2f2f2;
     }
+  }
+}
+
+.notificationsTab {
+  position: absolute;
+  height: 80vh;
+  width: 400px;
+  background: #ffffff;
+  right: 6vw;
+  top: 6vh;
+  z-index: 1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border-radius: 16px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .notificationTile {
+    padding: 1rem 20px;
+
+    .text {
+
+    }
+
+    .date {
+      padding-top: 10px;
+      opacity: 0.6;
+    }
+  }
+
+  .viewAll {
+    text-align: center;
   }
 }

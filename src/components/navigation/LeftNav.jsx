@@ -1,6 +1,7 @@
 import "../../sass/components/navigation.component.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { changeWindow } from "../../redux/actions/account/changeWindow";
+import { Link } from "react-router-dom";
 
 const LeftNav = () => {
   const dispatch = useDispatch();
@@ -9,11 +10,12 @@ const LeftNav = () => {
     dispatch(changeWindow(window));
   };
 
-  const windows = ["dashboard", "contacts", "campaigns", "tags", "surveys"];
+  const windows = ["dashboard", "contacts", "campaigns", "tags"];
 
   const NavLink = ({ window }) => {
     return (
-      <div
+      <Link
+        to={`/${window}`}
         className={`${
           state.accountWindow === window ? "navHighlighted" : ""
         } navLink`}
@@ -22,7 +24,7 @@ const LeftNav = () => {
         <span className={"text"}>
           {window.charAt(0).toUpperCase() + window.slice(1)}
         </span>
-      </div>
+      </Link>
     );
   };
   return (
