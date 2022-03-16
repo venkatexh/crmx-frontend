@@ -10,19 +10,19 @@ const LeftNav = () => {
     dispatch(changeWindow(window));
   };
 
-  const windows = ["dashboard", "contacts", "campaigns", "tags"];
+  const panes = ["dashboard", "contacts", "campaigns", "tags"];
 
-  const NavLink = ({ window }) => {
+  const NavLink = ({ pane }) => {
     return (
       <Link
-        to={`/${window}`}
+        to={`/${pane}`}
         className={`${
-          state.accountWindow === window ? "navHighlighted" : ""
+          window.location.pathname === `/${pane}` ? "navHighlighted" : ""
         } navLink`}
-        onClick={() => handleWindowChange(window)}
+        onClick={() => handleWindowChange(pane)}
       >
         <span className={"text"}>
-          {window.charAt(0).toUpperCase() + window.slice(1)}
+          {pane.charAt(0).toUpperCase() + pane.slice(1)}
         </span>
       </Link>
     );
@@ -30,8 +30,8 @@ const LeftNav = () => {
   return (
     <div className={"navigation"}>
       <div className={"logo"}>CRMX</div>
-      {windows.map((window, idx) => {
-        return <NavLink key={idx} window={window} />;
+      {panes.map((pane, idx) => {
+        return <NavLink key={idx} pane={pane} />;
       })}
     </div>
   );

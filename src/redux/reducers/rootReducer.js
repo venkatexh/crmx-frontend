@@ -14,6 +14,7 @@ import { persistReducer } from "redux-persist";
 import { notifications } from "./notifications/notifications";
 import { newNotification } from "./notifications/newNotification";
 import { organizationUsers } from "./organization/organizationUsers";
+import { dropdown } from "./navigation/dropdown";
 
 const reducer = combineReducers({
   loggedUser,
@@ -29,6 +30,7 @@ const reducer = combineReducers({
   notifications,
   newNotification,
   organizationUsers,
+  dropdown,
 });
 
 const persistConfig = {

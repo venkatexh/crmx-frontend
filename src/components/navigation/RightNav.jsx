@@ -5,32 +5,34 @@ import { useState } from "react";
 import NotificationTab from "./NotificationTab";
 import { setNewNotification } from "../../redux/actions/notifications/setNewNotification";
 import { Link } from "react-router-dom";
+import { setDropdown } from "../../redux/actions/navigation/setDropdown";
 
 const RightNav = () => {
-  const state = useSelector(({ loggedUser, newNotification }) => ({
+  const state = useSelector(({ loggedUser, newNotification, dropdown }) => ({
     loggedUser,
     newNotification,
+    dropdown,
   }));
   const [tabOpen, setTabOpen] = useState(false);
-  const [tab, setTab] = useState("");
   const dispatch = useDispatch();
 
   const tabToRender = () => {
-    if (tab === "profile") {
+    if (state.dropdown === "profile") {
       return <UserTab />;
-    } else if (tab === "notification") {
+    } else if (state.dropdown === "notification") {
       return <NotificationTab />;
     }
   };
 
   return (
     <div className={"rightNav"}>
-      {tabOpen ? <div>{tabToRender()}</div> : <></>}
+      {state.dropdown ? <div>{tabToRender()}</div> : <></>}
       <div
         className={"profileBtn"}
         onClick={() => {
-          setTab("profile");
-          setTabOpen(!tabOpen);
+          dispatch(
+            setDropdown(state.dropdown === "profile" ? null : "profile")
+          );
         }}
       >
         {state.loggedUser.firstName[0]}
@@ -38,8 +40,11 @@ const RightNav = () => {
       <div
         className={"iconContainer"}
         onClick={() => {
-          setTab("notification");
-          setTabOpen(!tabOpen);
+          dispatch(
+            setDropdown(
+              state.dropdown === "notification" ? null : "notification"
+            )
+          );
           dispatch(setNewNotification(false));
         }}
       >
