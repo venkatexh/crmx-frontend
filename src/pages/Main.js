@@ -39,15 +39,17 @@ const Main = () => {
 
   useEffect(() => {
     console.log("main");
-    const pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
-      cluster: process.env.REACT_APP_PUSHER_CLUSTER,
-    });
-    const channel = pusher.subscribe(
-      state.loggedUser.organization.orgInternalId
-    );
-    channel.bind("notifications", (data) => {
-      dispatch(setNewNotification(true));
-    });
+    if (state.loggedUser) {
+      const pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
+        cluster: process.env.REACT_APP_PUSHER_CLUSTER,
+      });
+      const channel = pusher.subscribe(
+        state.loggedUser.organization.orgInternalId
+      );
+      channel.bind("notifications", (data) => {
+        dispatch(setNewNotification(true));
+      });
+    }
   });
 
   const nonSessionRoutes = () => {

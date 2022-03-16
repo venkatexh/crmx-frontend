@@ -1,0 +1,88 @@
+.profilePage {
+
+  margin: 20px;
+
+  .header {
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .organization {
+        font-size: 36px;
+      }
+
+      .verified {
+        padding: 5px 10px;
+        background: #27d417;
+        border-radius: 10px;
+        color: #ffffff;
+      }
+
+      .joinedOn {
+        margin: 40px 0;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .profileBody {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .leaveOrgButton {
+      background: #db1a04;
+      height: 40px;
+      border: none;
+      padding: 5px 20px;
+      color: #ffffff;
+      border-radius: 5px;
+      font-size: 16px;
+      margin: 20px 0;
+      cursor: pointer;
+    }
+  }
+
+  .editProfile {
+    width: 70%;
+    border: 2px #f2f2f2 solid;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 4px 4px 36px 4px #e3e3e3;
+    padding: 20px 50px;
+  }
+
+  .profileDetails {
+    width: 75%;
+  }
+
+  .editRow {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+
+    .editGroup {
+      display: flex;
+      align-items: center;
+      width: 48%;
+
+      .editInput {
+        height: 30px;
+        width: 75%;
+        margin: 0 0 0 auto;
+      }
+    }
+
+    .saveButton {
+      margin: 0 0 0 auto;
+      background: #242423;
+      color: #ffffff;
+      height: 30px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}

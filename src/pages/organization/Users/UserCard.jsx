@@ -1,7 +1,7 @@
 const UserCard = ({ firstName, lastName, email }) => {
   return (
     <div className={"userCard"}>
-      <div className={"userAvatar"}>{firstName.charAt(0).toUpperCase()}</div>
+      <div className={"userAvatar"}>{firstName?.charAt(0).toUpperCase()}</div>
       <div className={"userName"}>
         {firstName} {lastName}
       </div>

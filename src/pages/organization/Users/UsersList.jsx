@@ -13,18 +13,30 @@ const UsersList = () => {
     dispatch(
       fetchOrganizationUsers(
         state.loggedUser.id,
-        state.loggedUser.organizationId
+        state.loggedUser.organization._id
       )
     );
   }, []);
   return (
-    <div>
-      {state.organizationUsers.map(({ firstName, lastName, email }) => {
-        return (
-          <UserCard firstName={firstName} lastName={lastName} email={email} />
-        );
-      })}
-    </div>
+    <>
+      <div>
+        {state.organizationUsers.currentUsers?.map((user) => {
+          return (
+            <UserCard
+              key={user._id}
+              firstName={user.firstName}
+              lastName={user.lastName}
+              email={user.email}
+            />
+          );
+        })}
+      </div>
+      <div>
+        {state.organizationUsers.invitedUsers?.map((user) => {
+          return <UserCard key={user._id} email={user.email} />;
+        })}
+      </div>
+    </>
   );
 };
 
