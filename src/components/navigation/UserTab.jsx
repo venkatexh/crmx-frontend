@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/actions/auth/signin";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { setDropdown } from "../../redux/actions/navigation/setDropdown";
 
 const UserTab = () => {
   const state = useSelector(({ loggedUser }) => ({ loggedUser }));
@@ -27,10 +28,18 @@ const UserTab = () => {
         </div>
       </div>
       <div className={"menu"}>
-        <Link to={"/profile"} className={"menu-item"}>
+        <Link
+          to={"/profile"}
+          className={"menu-item"}
+          onClick={() => dispatch(setDropdown(null))}
+        >
           Profile
         </Link>
-        <Link to={"/plans"} className={"menu-item"}>
+        <Link
+          to={"/plans"}
+          className={"menu-item"}
+          onClick={() => dispatch(setDropdown(null))}
+        >
           Plans
         </Link>
         <div className={"menu-item"} onClick={logUserOut}>

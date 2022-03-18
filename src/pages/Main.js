@@ -28,6 +28,7 @@ import Profile from "../components/profile/Profile";
 import { useEffect } from "react";
 import Pusher from "pusher-js";
 import { setNewNotification } from "../redux/actions/notifications/setNewNotification";
+import { setDropdown } from "../redux/actions/navigation/setDropdown";
 
 const Main = () => {
   const state = useSelector(({ loggedUser, confirmationData, modalState }) => ({
@@ -38,7 +39,6 @@ const Main = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("main");
     if (state.loggedUser) {
       const pusher = new Pusher(process.env.REACT_APP_PUSHER_KEY, {
         cluster: process.env.REACT_APP_PUSHER_CLUSTER,
@@ -74,7 +74,7 @@ const Main = () => {
     return (
       <div className={"mainContainer"}>
         <div className={"nav"}>{<LeftNav />}</div>
-        <div className={"body"}>
+        <div className={"body"} onClick={() => dispatch(setDropdown(null))}>
           <Switch>
             <Route exact path={"/"}>
               <Redirect to={"/dashboard"} />
