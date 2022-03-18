@@ -6,6 +6,7 @@ import { GoogleLogin } from "react-google-login";
 import Axios from "axios";
 import { withRouter } from "react-router";
 import hostHeader from "../../config/host";
+import { Link } from "react-router-dom";
 
 const LoginForm = (props) => {
   const dispatch = useDispatch();
@@ -96,9 +97,7 @@ const LoginForm = (props) => {
       </div>
       <div className={"googleLogin"}>
         <GoogleLogin
-          clientId={
-            "890966820609-l0avgljiscj57oqqifjajo23gmnlp2q7.apps.googleusercontent.com"
-          }
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
           buttonText={"Login with Google"}
           onSuccess={handleGoogleLogin}
           onFailure={handleGoogleLogin}
@@ -109,6 +108,11 @@ const LoginForm = (props) => {
       </div>
       <div>
         <div className={"header"}>Don't Have an Account?</div>
+        <div className={"utilityContainer"}>
+          <Link to={"/signup"}>
+            <button className={"loginButton"}>Sign up</button>
+          </Link>
+        </div>
       </div>
     </form>
   );

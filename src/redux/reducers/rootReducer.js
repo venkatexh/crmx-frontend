@@ -36,7 +36,12 @@ const reducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["selectedPlan", "notifications", "newNotification"],
+  whitelist: [
+    "selectedPlan",
+    "notifications",
+    "newNotification",
+    "selectedContact",
+  ],
 };
 
 const rootReducer = (state, action) => {
