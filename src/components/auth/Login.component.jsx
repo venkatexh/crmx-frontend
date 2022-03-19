@@ -73,7 +73,7 @@ const LoginForm = (props) => {
         <input
           className={"authInput"}
           type={"password"}
-          placeholder={"mypassword"}
+          placeholder={"my password"}
           onChange={(e) => {
             setPassword(e.target.value);
             setErrorMessage("");
