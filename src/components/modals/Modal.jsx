@@ -3,16 +3,19 @@ import NewContact from "./NewContact";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../redux/actions/utility/toggleModal";
 import NewCampaign from "./NewCampaign/NewCampaign";
+import NewTag from "./NewTag";
 
 const Modal = () => {
   const dispatch = useDispatch();
   const state = useSelector(({ modalState }) => ({ modalState }));
   const newContact = "new-contact";
   const newCampaign = "new-campaign";
+  const newTag = "new-tag";
   const modalMap = new Map();
 
   modalMap.set(newContact, <NewContact />);
   modalMap.set(newCampaign, <NewCampaign />);
+  modalMap.set(newTag, <NewTag />);
 
   const handleModalClose = () => {
     dispatch(toggleModal(null));
