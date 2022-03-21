@@ -71,7 +71,7 @@ const NewContact = () => {
         <input
           className={"modalInput inputLarge"}
           type={"email"}
-          placeholder={"myemail@domain.com"}
+          placeholder={"email"}
           onChange={(e) => {
             setErrorMessage("");
             setEmail(e.target.value);
@@ -120,7 +120,7 @@ const NewContact = () => {
           </select>
         </div>
         <div className={"tagsInput"}>
-          <label>Add tags to your campaign</label>
+          <label>Add tags to your contact</label>
           <div className={"tagsList"}>
             <div className={"userTagsList"}>
               <div className={"listWrapper"}>

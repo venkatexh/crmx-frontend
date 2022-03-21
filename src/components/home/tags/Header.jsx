@@ -1,10 +1,9 @@
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../../sass/components/home/dashboard/header.component.scss";
-import {Link} from "react-router-dom";
-import {toggleModal} from "../../../redux/actions/utility/toggleModal";
+import { toggleModal } from "../../../redux/actions/utility/toggleModal";
 
 const Header = () => {
-  const state = useSelector(({loggedUser}) => ({loggedUser}));
+  const state = useSelector(({ loggedUser }) => ({ loggedUser }));
   const dispatch = useDispatch();
   const modalType = "new-tag";
   const handleClick = () => {
@@ -20,11 +19,9 @@ const Header = () => {
         </div>
       </div>
       <div>
-        <Link to={"contacts"}>
-          <button className={"viewContactsBtn"} onClick={() => handleClick()}>
-            New Tag
-          </button>
-        </Link>
+        <button className={"viewContactsBtn"} onClick={() => handleClick()}>
+          New Tag
+        </button>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import "../../sass/components/navigation.component.scss";
 import { useDispatch, useSelector } from "react-redux";
 import UserTab from "./UserTab";
-import { useState } from "react";
 import NotificationTab from "./NotificationTab";
 import { setNewNotification } from "../../redux/actions/notifications/setNewNotification";
 import { Link } from "react-router-dom";
@@ -13,7 +12,6 @@ const RightNav = () => {
     newNotification,
     dropdown,
   }));
-  const [tabOpen, setTabOpen] = useState(false);
   const dispatch = useDispatch();
 
   const tabToRender = () => {

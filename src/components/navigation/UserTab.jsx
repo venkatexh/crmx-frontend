@@ -1,13 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/actions/auth/signin";
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { setDropdown } from "../../redux/actions/navigation/setDropdown";
 
 const UserTab = () => {
   const state = useSelector(({ loggedUser }) => ({ loggedUser }));
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const logUserOut = () => {
     sessionStorage.clear();
@@ -41,6 +39,13 @@ const UserTab = () => {
           onClick={() => dispatch(setDropdown(null))}
         >
           Plans
+        </Link>
+        <Link
+          to={"/bills"}
+          className={"menu-item"}
+          onClick={() => dispatch(setDropdown(null))}
+        >
+          Bills
         </Link>
         <div className={"menu-item"} onClick={logUserOut}>
           Log Out

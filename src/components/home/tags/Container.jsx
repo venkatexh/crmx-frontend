@@ -35,7 +35,7 @@ const Container = () => {
       return (
         <div>
           {state.tags.length === 0 ? (
-            <div>You don't have any campaigns</div>
+            <div>You don't have any tags yet</div>
           ) : (
             <div>
               {state.tags.map(
