@@ -85,14 +85,14 @@ const SignupForm = (props) => {
         <input
           className={"authInput"}
           type={"email"}
-          placeholder={"myemail@domain.com"}
+          placeholder={"email"}
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <input
           className={"authInput"}
           type={"password"}
-          placeholder={"my password"}
+          placeholder={"password"}
           onChange={(e) => {
             setPassword(e.target.value);
             setErrorMessage("");

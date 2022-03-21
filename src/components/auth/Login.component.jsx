@@ -66,14 +66,14 @@ const LoginForm = (props) => {
         <input
           className={"authInput"}
           type={"email"}
-          placeholder={"myemail@domain.com"}
+          placeholder={"email"}
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <input
           className={"authInput"}
           type={"password"}
-          placeholder={"my password"}
+          placeholder={"password"}
           onChange={(e) => {
             setPassword(e.target.value);
             setErrorMessage("");
@@ -82,7 +82,8 @@ const LoginForm = (props) => {
         />
       </div>
       <div className={"utilityContainer"}>
-        <span className={"errorMessage"}>{errorMessage}</span>
+        <span className={"errorMessage"}>{errorMessage}</span>Use email:
+        test@test.com, password: test
         <button className={"loginButton"} onClick={handleLogin} type={"submit"}>
           {loading ? (
             <img
