@@ -4,9 +4,24 @@ import { saveCampaigns } from "../../../redux/actions/account/saveCampaigns";
 import Campaign from "./Campaign";
 import "../../../sass/components/home/campaigns/container.scss";
 
+const Filter = ({ text, selectedFilter, handleFilterClick }) => {
+  return (
+    <div
+      className={`filter ${selectedFilter === text ? "selectedFilter" : ""}`}
+      onClick={() => handleFilterClick(text)}
+    >
+      {text.charAt(0).toUpperCase()}
+      {text.slice(1)}
+    </div>
+  );
+};
+
+const filters = ["all", "draft", "scheduled", "sent", "failed"];
+
 const Container = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState("all");
   const state = useSelector(({ campaigns, loggedUser }) => ({
     campaigns,
     loggedUser,
@@ -20,7 +35,11 @@ const Container = () => {
       );
       setLoading(false);
     }, 500);
-  }, []);
+  }, [selectedFilter]);
+
+  const handleFilterClick = (text) => {
+    setSelectedFilter(text);
+  };
 
   const componentToRender = () => {
     if (loading) {
@@ -38,21 +57,42 @@ const Container = () => {
             <div>You don't have any campaigns</div>
           ) : (
             <div>
-              {state.campaigns.map(
-                ({ name, status, scheduledAt, sentAt, sentTo, _id }) => {
-                  return (
-                    <Campaign
-                      name={name}
-                      status={status}
-                      scheduledAt={scheduledAt}
-                      sentAt={sentAt}
-                      sentTo={sentTo}
-                      id={_id}
-                      key={_id}
-                    />
-                  );
-                }
-              )}
+              {selectedFilter === "all"
+                ? state.campaigns.map(
+                    ({ name, status, scheduledAt, sentAt, sentTo, _id }) => {
+                      return (
+                        <Campaign
+                          name={name}
+                          status={status}
+                          scheduledAt={scheduledAt}
+                          sentAt={sentAt}
+                          sentTo={sentTo}
+                          id={_id}
+                          key={_id}
+                        />
+                      );
+                    }
+                  )
+                : state.campaigns
+                    .filter(
+                      (campaign) =>
+                        campaign.status.toLowerCase() === selectedFilter
+                    )
+                    .map(
+                      ({ name, status, scheduledAt, sentAt, sentTo, _id }) => {
+                        return (
+                          <Campaign
+                            name={name}
+                            status={status}
+                            scheduledAt={scheduledAt}
+                            sentAt={sentAt}
+                            sentTo={sentTo}
+                            id={_id}
+                            key={_id}
+                          />
+                        );
+                      }
+                    )}
             </div>
           )}
         </div>
@@ -64,7 +104,15 @@ const Container = () => {
       <div className={`${loading ? "campaignsLoading" : "campaignsLoaded"}`}>
         {componentToRender()}
       </div>
-      <div className={"filtersList"}></div>
+      <div className={"filtersList"}>
+        {filters.map((filter) => (
+          <Filter
+            text={filter}
+            selectedFilter={selectedFilter}
+            handleFilterClick={(text) => handleFilterClick(text)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
