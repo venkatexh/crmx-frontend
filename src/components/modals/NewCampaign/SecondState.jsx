@@ -134,11 +134,19 @@ const SecondState = ({
               />
             </div>
           ) : (
-            <div className={"tagsInput"}>
-              <div className={"tagsList"}>
-                <div className={"selectedTagsList"}></div>
-                <div className={"userTagsList"}></div>
-              </div>
+            <div className={"htmlRender"}>
+              <textarea
+                rows={10}
+                className={"emailText"}
+                value={html}
+                onChange={(e) => handleHtmlChange(e)}
+                placeholder={"Enter HTML code here"}
+              />
+              <div className={"previewText"}>Preview</div>
+              <div
+                dangerouslySetInnerHTML={{ __html: html }}
+                className={"previewHtml"}
+              />
             </div>
           )}
           <div className={"btnContainer"}>

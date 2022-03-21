@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import FirstState from "./FirstState";
 import SecondState from "./SecondState";
 import ThirdState from "./ThirdState";
@@ -11,13 +11,13 @@ const NewCampaign = () => {
   const [html, setHtml] = useState("");
   const [from, setFrom] = useState("");
   const [createdCampaign, setCreatedCampaign] = useState(null);
-  const [currentState, setCurrentState] = useState(0);
+  const [currentState, setCurrentState] = useState(2);
 
   const handleTagAddition = (tag) => {
     if (tags.filter((t) => t.id === tag._id).length > 0) {
       setTags(tags.filter((found) => found.id !== tag._id));
     } else {
-      setTags((prev) => [...prev, {id: tag._id, name: tag.name}]);
+      setTags((prev) => [...prev, { id: tag._id, name: tag.name }]);
     }
   };
 
@@ -45,14 +45,14 @@ const NewCampaign = () => {
       handleSubjectChange={(e) => setSubject(e.target.value)}
       handleTextChange={(e) => setText(e.target.value)}
       handleHtmlChange={(e) => setHtml(e.target.value)}
-      handleFromChange={e => setFrom(e.target.value)}
-      handleCurrentCampaign={id => setCreatedCampaign(id)}
+      handleFromChange={(e) => setFrom(e.target.value)}
+      handleCurrentCampaign={(id) => setCreatedCampaign(id)}
       handleStateChange={() => setCurrentState(currentState + 1)}
       handlePrevState={() => setCurrentState(currentState - 1)}
     />
   );
 
-  stateMap.set(2, <ThirdState campaignId={createdCampaign}/>);
+  stateMap.set(2, <ThirdState campaignId={createdCampaign} />);
 
   const componentToRender = () => {
     return stateMap.get(currentState);
