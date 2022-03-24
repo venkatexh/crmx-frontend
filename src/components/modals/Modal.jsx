@@ -1,9 +1,11 @@
+import { lazy, Suspense } from "react";
 import "../../sass/components/modals/modal.component.scss";
-import NewContact from "./NewContact";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../redux/actions/utility/toggleModal";
-import NewCampaign from "./NewCampaign/NewCampaign";
-import NewTag from "./NewTag";
+
+const NewContact = lazy(() => import("./NewContact"));
+const NewCampaign = lazy(() => import("./NewCampaign/NewCampaign"));
+const NewTag = lazy(() => import("./NewTag"));
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -22,7 +24,12 @@ const Modal = () => {
   };
 
   const componentToRender = () => {
-    return modalMap.get(state.modalState);
+    return (
+      <Suspense fallback={"Loading.."}>
+        {" "}
+        {modalMap.get(state.modalState)}
+      </Suspense>
+    );
   };
 
   return (

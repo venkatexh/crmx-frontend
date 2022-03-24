@@ -4,31 +4,36 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import Login from "./auth/Login";
-import Signup from "./auth/Signup";
+import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Plan from "./account/Plan";
-import Home from "./index/Home";
-import Contact from "./contact";
-import Campaign from "./Campaign";
 import "../sass/components/home/main.component.scss";
-import Confirmation from "../components/modals/Confirmation";
-import Checkout from "./checkout";
-import PaymentSuccess from "./checkout/PaymentSuccess";
+import Home from "./index/Home";
 import LeftNav from "../components/navigation/LeftNav";
 import RightNav from "../components/navigation/RightNav";
-import Dashboard from "./home/Dashboard";
-import Contacts from "./home/Contacts";
-import Campaigns from "./home/Campaigns";
-import Tags from "./home/Tags";
-import OrganizationSettings from "./organization/OrganizationSettings";
-import OrganizationInvitation from "./organization/OrganizationInvitation";
 import Modal from "../components/modals/Modal";
-import Profile from "../components/profile/Profile";
-import { useEffect } from "react";
 import Pusher from "pusher-js";
 import { setNewNotification } from "../redux/actions/notifications/setNewNotification";
 import { setDropdown } from "../redux/actions/navigation/setDropdown";
+
+const Login = lazy(() => import("./auth/Login"));
+const Signup = lazy(() => import("./auth/Signup"));
+const Dashboard = lazy(() => import("./home/Dashboard"));
+const Checkout = lazy(() => import("./checkout"));
+const Contact = lazy(() => import("./contact"));
+const Plan = lazy(() => import("./account/Plan"));
+const Campaign = lazy(() => import("./Campaign"));
+const Confirmation = lazy(() => import("../components/modals/Confirmation"));
+const PaymentSuccess = lazy(() => import("./checkout/PaymentSuccess"));
+const Contacts = lazy(() => import("./home/Contacts"));
+const Campaigns = lazy(() => import("./home/Campaigns"));
+const Tags = lazy(() => import("./home/Tags"));
+const Profile = lazy(() => import("../components/profile/Profile"));
+const OrganizationInvitation = lazy(() =>
+  import("./organization/OrganizationInvitation")
+);
+const OrganizationSettings = lazy(() =>
+  import("./organization/OrganizationSettings")
+);
 
 const Main = () => {
   const state = useSelector(({ loggedUser, confirmationData, modalState }) => ({
@@ -55,17 +60,19 @@ const Main = () => {
   const nonSessionRoutes = () => {
     return (
       <Switch>
-        <Route exact path={"/"}>
-          <Redirect to={"/login"} />
-        </Route>
-        <Route exact path={"/login"} component={Login} />
-        <Route exact path={"/signup"} component={Signup} />
-        <Route
-          exact
-          path={"/user/invite/:id"}
-          component={OrganizationInvitation}
-        />
-        <Redirect to={"/"} />
+        <Suspense fallback={"Loading.."}>
+          <Route exact path={"/"}>
+            <Redirect to={"/login"} />
+          </Route>
+          <Route exact path={"/login"} component={Login} />
+          <Route exact path={"/signup"} component={Signup} />
+          <Route
+            exact
+            path={"/user/invite/:id"}
+            component={OrganizationInvitation}
+          />
+          <Redirect to={"/"} />
+        </Suspense>
       </Switch>
     );
   };
@@ -76,30 +83,32 @@ const Main = () => {
         <div className={"nav"}>{<LeftNav />}</div>
         <div className={"body"} onClick={() => dispatch(setDropdown(null))}>
           <Switch>
-            <Route exact path={"/"}>
-              <Redirect to={"/dashboard"} />
-            </Route>
-            <Route exact path={"/dashboard"} component={Dashboard} />
-            <Route exact path={"/contacts"} component={Contacts} />
-            <Route exact path={"/campaigns"} component={Campaigns} />
-            <Route exact path={"/tags"} component={Tags} />
-            <Route exact path={"/home"} component={Home} />
-            <Route exact path={"/contact/:id"} component={Contact} />
-            <Route exact path={"/campaign/:id"} component={Campaign} />
-            <Route
-              exact
-              path={"/organization-settings"}
-              component={OrganizationSettings}
-            />
-            <Route exact path={"/plans"} component={Plan} />
-            <Route exact path={"/profile"} component={Profile} />
-            <Route exact path={"/checkout"} component={Checkout} />
-            <Route
-              exact
-              path={"/payment-success-redirect"}
-              component={PaymentSuccess}
-            />
-            <Redirect to={"/"} />
+            <Suspense fallback={"Loading.."}>
+              <Route exact path={"/"}>
+                <Redirect to={"/dashboard"} />
+              </Route>
+              <Route exact path={"/dashboard"} component={Dashboard} />
+              <Route exact path={"/contacts"} component={Contacts} />
+              <Route exact path={"/campaigns"} component={Campaigns} />
+              <Route exact path={"/tags"} component={Tags} />
+              <Route exact path={"/home"} component={Home} />
+              <Route exact path={"/contact/:id"} component={Contact} />
+              <Route exact path={"/campaign/:id"} component={Campaign} />
+              <Route
+                exact
+                path={"/organization-settings"}
+                component={OrganizationSettings}
+              />
+              <Route exact path={"/plans"} component={Plan} />
+              <Route exact path={"/profile"} component={Profile} />
+              <Route exact path={"/checkout"} component={Checkout} />
+              <Route
+                exact
+                path={"/payment-success-redirect"}
+                component={PaymentSuccess}
+              />
+              <Redirect to={"/"} />
+            </Suspense>
           </Switch>
         </div>
         <div className={"rightCol"}>{<RightNav />}</div>
