@@ -11,7 +11,7 @@ const NewCampaign = () => {
   const [html, setHtml] = useState("");
   const [from, setFrom] = useState("");
   const [createdCampaign, setCreatedCampaign] = useState(null);
-  const [currentState, setCurrentState] = useState(2);
+  const [currentState, setCurrentState] = useState(0);
 
   const handleTagAddition = (tag) => {
     if (tags.filter((t) => t.id === tag._id).length > 0) {
