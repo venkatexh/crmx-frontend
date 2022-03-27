@@ -4,7 +4,7 @@ import Tag from "./Tag";
 import "../../../sass/components/home/campaigns/container.scss";
 import { saveTags } from "../../../redux/actions/account/saveTags";
 
-const Container = () => {
+const TagsContainer = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const state = useSelector(({ tags, loggedUser }) => ({
@@ -67,4 +67,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default TagsContainer;

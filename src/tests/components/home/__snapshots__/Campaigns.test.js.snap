@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should be campaigns container component snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`should be campaigns container component snapshot 2`] = `ShallowWrapper {}`;
+
+exports[`should be campaigns header component snapshot 1`] = `ShallowWrapper {}`;

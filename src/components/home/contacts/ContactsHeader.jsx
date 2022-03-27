@@ -3,7 +3,7 @@ import "../../../sass/components/home/dashboard/header.component.scss";
 import { Link } from "react-router-dom";
 import { toggleModal } from "../../../redux/actions/utility/toggleModal";
 
-const Header = () => {
+const ContactsHeader = () => {
   const state = useSelector(({ loggedUser }) => ({ loggedUser }));
   const dispatch = useDispatch();
   const modalType = "new-contact";
@@ -30,4 +30,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default ContactsHeader;

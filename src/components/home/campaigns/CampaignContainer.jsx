@@ -18,7 +18,7 @@ const Filter = ({ text, selectedFilter, handleFilterClick }) => {
 
 const filters = ["all", "draft", "scheduled", "sent", "failed"];
 
-const Container = () => {
+const CampaignContainer = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState("all");
@@ -117,4 +117,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default CampaignContainer;

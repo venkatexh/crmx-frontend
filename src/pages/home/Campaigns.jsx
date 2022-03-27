@@ -1,11 +1,11 @@
-import Header from "../../components/home/campaigns/Header";
-import Container from "../../components/home/campaigns/Container";
+import CampaignHeader from "../../components/home/campaigns/CampaignHeader";
+import CampaignContainer from "../../components/home/campaigns/CampaignContainer";
 
 const Campaigns = () => {
   return (
     <>
-      <Header/>
-      <Container/>
+      <CampaignHeader />
+      <CampaignContainer />
     </>
   );
 };

@@ -1,11 +1,11 @@
-import Header from "../../components/home/tags/Header";
-import Container from "../../components/home/tags/Container";
+import TagsHeader from "../../components/home/tags/TagsHeader";
+import TagsContainer from "../../components/home/tags/TagsContainer";
 
 const Tags = () => {
   return (
     <div>
-      <Header/>
-      <Container/>
+      <TagsHeader />
+      <TagsContainer />
     </div>
   );
 };

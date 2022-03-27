@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should be contacts container component snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`should be contacts header component snapshot 1`] = `ShallowWrapper {}`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should be first state component snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`should be new campaign modal component snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`should be second state component snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`should be third state component snapshot 1`] = `ShallowWrapper {}`;
