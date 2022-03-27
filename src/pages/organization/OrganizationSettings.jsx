@@ -4,7 +4,9 @@ const OrganizationSettings = () => {
   return (
     <div>
       <div>USERS</div>
-      <div>{<UsersList />}</div>
+      <div>
+        <UsersList />
+      </div>
     </div>
   );
 };

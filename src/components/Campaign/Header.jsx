@@ -1,3 +1,4 @@
+import React from "react";
 import "../../sass/components/contact/contact.component.scss";
 
 const Header = ({ campaign }) => {
@@ -18,4 +19,4 @@ const Header = ({ campaign }) => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

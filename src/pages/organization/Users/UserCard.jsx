@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 const UserCard = ({ firstName, lastName, email }) => {
   return (
     <div className={"userCard"}>
@@ -11,4 +13,4 @@ const UserCard = ({ firstName, lastName, email }) => {
   );
 };
 
-export default UserCard;
+export default memo(UserCard);

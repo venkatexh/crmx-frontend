@@ -2,7 +2,7 @@ import "../../../sass/components/home/campaigns/campaign.component.scss";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 import hostHeader from "../../../config/host";
-import { useState } from "react";
+import { memo, useState } from "react";
 
 const colors = {
   draft: "#e8eded",
@@ -71,4 +71,4 @@ const Campaign = ({ name, status, scheduledAt, sentAt, sentTo, id }) => {
   );
 };
 
-export default Campaign;
+export default memo(Campaign);

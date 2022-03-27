@@ -1,6 +1,7 @@
 import "../../../sass/components/home/tags/tag.component.scss";
+import { memo } from "react";
 
-const Tag = ({name, length, createdAt, updatedAt}) => {
+const Tag = ({ name, length, createdAt, updatedAt }) => {
   return (
     <div className={"tag"}>
       <div className={"left"}>
@@ -18,4 +19,4 @@ const Tag = ({name, length, createdAt, updatedAt}) => {
   );
 };
 
-export default Tag;
+export default memo(Tag);

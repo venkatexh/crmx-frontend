@@ -59,8 +59,8 @@ const Main = () => {
 
   const nonSessionRoutes = () => {
     return (
-      <Switch>
-        <Suspense fallback={"Loading.."}>
+      <Suspense fallback={"Loading.."}>
+        <Switch>
           <Route exact path={"/"}>
             <Redirect to={"/login"} />
           </Route>
@@ -72,8 +72,8 @@ const Main = () => {
             component={OrganizationInvitation}
           />
           <Redirect to={"/"} />
-        </Suspense>
-      </Switch>
+        </Switch>
+      </Suspense>
     );
   };
 
@@ -82,8 +82,8 @@ const Main = () => {
       <div className={"mainContainer"}>
         <div className={"nav"}>{<LeftNav />}</div>
         <div className={"body"} onClick={() => dispatch(setDropdown(null))}>
-          <Switch>
-            <Suspense fallback={"Loading.."}>
+          <Suspense fallback={"Loading.."}>
+            <Switch>
               <Route exact path={"/"}>
                 <Redirect to={"/dashboard"} />
               </Route>
@@ -108,8 +108,8 @@ const Main = () => {
                 component={PaymentSuccess}
               />
               <Redirect to={"/"} />
-            </Suspense>
-          </Switch>
+            </Switch>
+          </Suspense>
         </div>
         <div className={"rightCol"}>{<RightNav />}</div>
         {state.modalState ? <Modal /> : <></>}

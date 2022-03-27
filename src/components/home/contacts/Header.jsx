@@ -5,7 +5,6 @@ import { toggleModal } from "../../../redux/actions/utility/toggleModal";
 
 const Header = () => {
   const state = useSelector(({ loggedUser }) => ({ loggedUser }));
-  console.log(state.loggedUser);
   const dispatch = useDispatch();
   const modalType = "new-contact";
   const handleClick = () => {

@@ -1,18 +1,18 @@
 import "../../sass/components/navigation.component.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeWindow } from "../../redux/actions/account/changeWindow";
 import { Link } from "react-router-dom";
+import { memo } from "react";
 
 const LeftNav = () => {
   const dispatch = useDispatch();
-  const state = useSelector(({ accountWindow }) => ({ accountWindow }));
   const handleWindowChange = (window) => {
     dispatch(changeWindow(window));
   };
 
   const panes = ["dashboard", "contacts", "campaigns", "tags"];
 
-  const NavLink = ({ pane }) => {
+  const NavLink = memo(({ pane }) => {
     return (
       <Link
         to={`/${pane}`}
@@ -26,7 +26,8 @@ const LeftNav = () => {
         </span>
       </Link>
     );
-  };
+  });
+
   return (
     <div className={"navigation"}>
       <div className={"logo"}>CRMX</div>

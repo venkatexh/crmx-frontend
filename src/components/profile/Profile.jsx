@@ -2,10 +2,6 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import "../../sass/pages/profile.page.scss";
 
-const InputTile = ({ text }) => {
-  return <div>{text}</div>;
-};
-
 const EditProfile = ({
   firstName,
   lastName,
